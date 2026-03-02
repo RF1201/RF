@@ -13,11 +13,20 @@ window.addEventListener('load', () => {
     }
 });
 
-const container = document.querySelector('.scroll-container');
 
-// Clone images for loop effect
-const clone = container.cloneNode(true);
-document.body.appendChild(clone);
+
+//clone
+// const container = document.querySelector('.scroll-container');
+
+// // Clone images for loop effect
+// const clone = container.cloneNode(true);
+// document.body.appendChild(clone);
+
+// window.addEventListener('scroll', () => {
+//     if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
+//         window.scrollTo(0, 1);
+//     }
+// });
 
 window.addEventListener('scroll', () => {
     if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
