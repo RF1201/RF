@@ -94,7 +94,7 @@ const artworks = {
      14: {
         title: "I believe in myself enough to be patient",
         description: "acrylic paint, fineliner, marker, pen, colored pencil on cardboard, 70 cm x 100 cm",
-        images: ["assets/images/artworks/14-I-believe-in-myself-enough-to-be-patient.jpg", "assets/images/artworks/14.1-I believe-in-myself-enough-to-be-patient-Detail.jpg"]
+        images: ["assets/images/artworks/14-I-believe-in-myself-enough-to-be-patient.jpg", "assets/images/artworks/14.1-Ibelieve-in-myself-enough-to-be-patient-Detail.jpg"]
     },
     15: {
         title: "Mutterwunde heilen",

@@ -35,15 +35,41 @@
 
 
 // Simple work page image loader
+// document.addEventListener('DOMContentLoaded', function() {
+//     const workImages = document.querySelectorAll('.art-images img');
+    
+//     workImages.forEach(img => {
+//         if (img.complete) {
+//             img.classList.add('loaded');
+//         } else {
+//             img.addEventListener('load', function() {
+//                 this.classList.add('loaded');
+//             });
+//         }
+//     });
+// });
+
+
+
+
+
+
+
+// ===== WORK PAGE IMAGE LOADING =====
 document.addEventListener('DOMContentLoaded', function() {
     const workImages = document.querySelectorAll('.art-images img');
     
     workImages.forEach(img => {
+        // Initially hide image
+        img.style.opacity = '0';
+        
         if (img.complete) {
             img.classList.add('loaded');
+            img.style.opacity = '1';
         } else {
             img.addEventListener('load', function() {
                 this.classList.add('loaded');
+                this.style.opacity = '1';
             });
         }
     });

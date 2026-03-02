@@ -93,32 +93,16 @@ document.addEventListener("mouseenter", () => {
 
 
 
-
-
-
-
-
-// ===== HOMEPAGE IMAGE LOADING WITH SKELETON =====
-document.querySelectorAll('.scroll-item img').forEach(img => {
-    const parent = img.closest('.scroll-item');
-    
-    if (img.complete) {
-        // Already loaded
-        img.classList.add('loaded');
-    } else {
-        // Show skeleton while loading
-        parent.classList.add('skeleton');
-        
-        img.addEventListener('load', function() {
-            this.classList.add('loaded');
-            parent.classList.remove('skeleton');
-        });
-        
-        // Fallback in case of error
-        img.addEventListener('error', function() {
-            parent.classList.remove('skeleton');
-        });
-    }
+// ===== IMAGE LOADING HANDLER =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle homepage images
+    document.querySelectorAll('.scroll-item img').forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', function() {
+                this.classList.add('loaded');
+            });
+        }
+    });
 });
-
-

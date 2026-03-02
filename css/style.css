@@ -53,9 +53,9 @@ body {
     cursor: pointer;
     text-decoration: none;
     display: flex;
-    justify-content: center;  /* Center image horizontally */
-    align-items: center;      /* Center image vertically */
-    background-color: #ffffff; /* White background behind each image */
+    justify-content: center;  
+    align-items: center;      
+    background-color: #ffffff; 
 }
 
 /* Images maintain their natural proportions */
@@ -401,123 +401,65 @@ padding: 20px 20px;
     opacity: 0.6;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Position the image container properly */
-/* ===== SKELETON LOADER STYLES (for both homepage and work page) ===== */
-
-/* @keyframes skeleton-pulse {
-    0% { opacity: 0.6; }
-    50% { opacity: 1; }
-    100% { opacity: 0.6; }
-}
-
-.skeleton {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: skeleton-pulse 1.5s infinite, skeleton-shine 1.5s infinite;
-}
-
-@keyframes skeleton-shine {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-.scroll-item {
+/* Needed for spinner positioning only */
+.scroll-item,
+.art-images {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    background-color: #ffffff;
 }
 
-.scroll-item img {
+/* Hide image before load (NO SIZE CHANGES) */
+.scroll-item img,
+.art-images img {
     opacity: 0;
-    transition: opacity 0.3s ease;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    position: relative;
-    z-index: 2;
+    transition: opacity 0.4s ease;
 }
 
-.scroll-item img.loaded {
+/* Fade in when loaded */
+.scroll-item img.loaded,
+.art-images img.loaded {
     opacity: 1;
 }
 
-.scroll-item.skeleton::before {
+/* Homepage spinner */
+.scroll-item.loading::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: auto;
-    height: 90%;
-    max-width: 90%;
-    aspect-ratio: attr(data-ratio);
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: skeleton-shine 1.5s infinite;
-    z-index: 1;
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(0,0,0,0.08);
+    border-top-color: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
 }
 
-.art-images {
-    position: relative;
-    min-height: 300px; 
+/* Work page subtle loader */
+.art-images.loading::before {
+    content: '✦';
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 26px;
+    color: #ccc;
+    font-family: 'Playfair Display', serif;
+    animation: pulse 1.2s ease-in-out infinite;
 }
 
-.art-images img {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    width: 100%;
-    max-width: 700px;
-    max-height: 75vh;
-    object-fit: contain;
-    margin: 0 auto 20px;
-    display: block;
-    position: relative;
-    z-index: 2;
+/* Animations */
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-.art-images img.loaded {
-    opacity: 1;
-}
-
-.art-images .skeleton-placeholder {
-    width: 100%;
-    max-width: 700px;
-    height: 500px; 
-    margin: 0 auto 20px;
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: skeleton-shine 1.5s infinite;
-    border-radius: 4px;
-} */
-
-/* Simple image loading (no skeleton) */
-.scroll-item img,
-.art-images img {
-    transition: opacity 0.3s ease;
-}
-
-.scroll-item img.loaded,
-.art-images img.loaded {
-    opacity: 1;
+@keyframes pulse {
+    0%,100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
 }
