@@ -400,3 +400,72 @@ padding: 20px 20px;
 .newsletter-form button:hover {
     opacity: 0.6;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Position the image container properly */
+.scroll-item {
+    display: block;
+    height: 100vh;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;  /* Important for skeleton positioning */
+    background-color: #ffffff;
+}
+
+/* Image styling */
+.scroll-item img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    object-fit: contain;
+    margin: 0 auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+/* Loaded state */
+.scroll-item img.loaded {
+    opacity: 1;
+}
+
+/* Skeleton overlay - matches EXACT image position */
+.scroll-item.skeleton::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* Centers exactly like image */
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    aspect-ratio: attr(data-ratio);  /* Will match image ratio */
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-shine 1.5s infinite;
+    z-index: 1;
+}
+
+@keyframes skeleton-shine {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}

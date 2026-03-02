@@ -90,3 +90,37 @@ document.addEventListener("mouseenter", () => {
         exitTimer = null;
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+//skleton
+
+
+document.querySelectorAll('.scroll-item img').forEach(img => {
+    const parent = img.closest('.scroll-item');
+    
+    // Store image aspect ratio for skeleton
+    if (img.complete) {
+        const ratio = img.naturalWidth / img.naturalHeight;
+        parent.style.setProperty('--aspect-ratio', ratio);
+        img.classList.add('loaded');
+    } else {
+        parent.classList.add('skeleton');
+        
+        // Get ratio when image loads
+        img.addEventListener('load', function() {
+            const ratio = this.naturalWidth / this.naturalHeight;
+            parent.style.setProperty('--aspect-ratio', ratio);
+            this.classList.add('loaded');
+            parent.classList.remove('skeleton');
+        });
+    }
+});
