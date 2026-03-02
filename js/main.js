@@ -98,29 +98,27 @@ document.addEventListener("mouseenter", () => {
 
 
 
-
-
-
-//skleton
-
-
+// ===== HOMEPAGE IMAGE LOADING WITH SKELETON =====
 document.querySelectorAll('.scroll-item img').forEach(img => {
     const parent = img.closest('.scroll-item');
     
-    // Store image aspect ratio for skeleton
     if (img.complete) {
-        const ratio = img.naturalWidth / img.naturalHeight;
-        parent.style.setProperty('--aspect-ratio', ratio);
+        // Already loaded
         img.classList.add('loaded');
     } else {
+        // Show skeleton while loading
         parent.classList.add('skeleton');
         
-        // Get ratio when image loads
         img.addEventListener('load', function() {
-            const ratio = this.naturalWidth / this.naturalHeight;
-            parent.style.setProperty('--aspect-ratio', ratio);
             this.classList.add('loaded');
+            parent.classList.remove('skeleton');
+        });
+        
+        // Fallback in case of error
+        img.addEventListener('error', function() {
             parent.classList.remove('skeleton');
         });
     }
 });
+
+

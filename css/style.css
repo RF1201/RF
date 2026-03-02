@@ -419,53 +419,105 @@ padding: 20px 20px;
 
 
 /* Position the image container properly */
+/* ===== SKELETON LOADER STYLES (for both homepage and work page) ===== */
+
+/* @keyframes skeleton-pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-pulse 1.5s infinite, skeleton-shine 1.5s infinite;
+}
+
+@keyframes skeleton-shine {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
 .scroll-item {
-    display: block;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     width: 100%;
-    cursor: pointer;
-    text-decoration: none;
-    position: relative;  /* Important for skeleton positioning */
     background-color: #ffffff;
 }
 
-/* Image styling */
 .scroll-item img {
-    height: 100%;
-    width: auto;
-    max-width: 100%;
-    display: block;
-    object-fit: contain;
-    margin: 0 auto;
     opacity: 0;
     transition: opacity 0.3s ease;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
     position: relative;
     z-index: 2;
 }
 
-/* Loaded state */
 .scroll-item img.loaded {
     opacity: 1;
 }
 
-/* Skeleton overlay - matches EXACT image position */
-.scroll-item.skeleton::after {
+.scroll-item.skeleton::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);  /* Centers exactly like image */
+    transform: translate(-50%, -50%);
     width: auto;
-    height: 100%;
-    max-width: 100%;
-    aspect-ratio: attr(data-ratio);  /* Will match image ratio */
+    height: 90%;
+    max-width: 90%;
+    aspect-ratio: attr(data-ratio);
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
     background-size: 200% 100%;
     animation: skeleton-shine 1.5s infinite;
     z-index: 1;
 }
 
-@keyframes skeleton-shine {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+.art-images {
+    position: relative;
+    min-height: 300px; 
+}
+
+.art-images img {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    width: 100%;
+    max-width: 700px;
+    max-height: 75vh;
+    object-fit: contain;
+    margin: 0 auto 20px;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+.art-images img.loaded {
+    opacity: 1;
+}
+
+.art-images .skeleton-placeholder {
+    width: 100%;
+    max-width: 700px;
+    height: 500px; 
+    margin: 0 auto 20px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-shine 1.5s infinite;
+    border-radius: 4px;
+} */
+
+/* Simple image loading (no skeleton) */
+.scroll-item img,
+.art-images img {
+    transition: opacity 0.3s ease;
+}
+
+.scroll-item img.loaded,
+.art-images img.loaded {
+    opacity: 1;
 }
