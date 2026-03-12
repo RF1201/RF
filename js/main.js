@@ -279,64 +279,51 @@
 
 
 document.addEventListener("DOMContentLoaded", function () {
+
     const container = document.querySelector(".scroll-container");
     if (!container) return;
 
     /* ===============================
-       PART 1: SAVE POSITION WHEN CLICKING CONTACT
+       SAVE POSITION WHEN CLICKING CONTACT
     =============================== */
-    
-    // Save position when clicking the contact button
+
     const contactLink = document.querySelector('.top-right a');
+
     if (contactLink) {
-        contactLink.addEventListener('click', function(e) {
-            const currentPos = window.scrollY;
-            sessionStorage.setItem('scrollPosition', currentPos);
-            console.log('✅ Position saved before going to contact:', currentPos);
-            // Let the link work normally
-            return true;
+        contactLink.addEventListener('click', () => {
+            sessionStorage.setItem("scrollPosition", window.scrollY);
         });
     }
 
     /* ===============================
-       PART 2: INFINITE SCROLL SETUP
+       DUPLICATE ITEMS FOR LOOP
     =============================== */
-    
-    // Clone all artworks once for infinite effect
+
     const items = Array.from(container.children);
+
     items.forEach(item => {
-        const clone = item.cloneNode(true);
-        container.appendChild(clone);
+        container.appendChild(item.cloneNode(true));
     });
 
-    // Function to get middle point
-    function getMiddlePosition() {
-        return container.scrollHeight / 2;
-    }
+    const halfHeight = container.scrollHeight / 2;
 
     /* ===============================
-       PART 3: RESTORE POSITION WHEN RETURNING
+       RESTORE POSITION
     =============================== */
-    
-    const savedPos = sessionStorage.getItem('scrollPosition');
-    
-    if (savedPos) {
-        // We have a saved position - use it
-        console.log('🔄 Restoring to saved position:', savedPos);
-        window.scrollTo(0, parseInt(savedPos));
-        
-        // Clear it after restoring so next fresh visit starts at middle
-        sessionStorage.removeItem('scrollPosition');
+
+    const saved = sessionStorage.getItem("scrollPosition");
+
+    if (saved) {
+        window.scrollTo(0, parseInt(saved));
+        sessionStorage.removeItem("scrollPosition");
     } else {
-        // No saved position - start in middle
-        console.log('Starting in middle');
-        window.scrollTo(0, getMiddlePosition());
+        window.scrollTo(0, halfHeight);
     }
 
     /* ===============================
-       PART 4: INFINITE SCROLL BEHAVIOR
+       STABLE INFINITE SCROLL
     =============================== */
-    
+
     let isAdjusting = false;
 
 window.addEventListener("scroll", () => {
@@ -346,46 +333,50 @@ window.addEventListener("scroll", () => {
     const scrollY = window.scrollY;
     const halfHeight = container.scrollHeight / 2;
 
-    // near bottom
-    if (scrollY > halfHeight + container.offsetTop) {
+    // bottom
+    if (scrollY > halfHeight * 1.8) {
 
         isAdjusting = true;
 
         window.scrollTo(0, scrollY - halfHeight);
 
-        requestAnimationFrame(() => {
+        setTimeout(() => {
             isAdjusting = false;
-        });
+        }, 100);
 
     }
 
-    // near top
-    if (scrollY < container.offsetTop + 5) {
+    // top
+    if (scrollY < halfHeight * 0.2) {
 
         isAdjusting = true;
 
         window.scrollTo(0, scrollY + halfHeight);
 
-        requestAnimationFrame(() => {
+        setTimeout(() => {
             isAdjusting = false;
-        });
+        }, 100);
 
     }
 
 });
 
     /* ===============================
-       PART 5: IMAGE FADE-IN
+       IMAGE FADE-IN
     =============================== */
-    
+
     const images = document.querySelectorAll(".scroll-item img");
+
     images.forEach(img => {
+
         if (img.complete) {
             img.classList.add("loaded");
         } else {
-            img.addEventListener("load", function() {
-                this.classList.add("loaded");
+            img.addEventListener("load", () => {
+                img.classList.add("loaded");
             });
         }
+
     });
+
 });
