@@ -81,7 +81,7 @@ color:#000;
 font-family:'Playfair Display',serif;
 font-size:22px;
 margin-bottom:40px;
-font-weight: 600;
+font-weight: 800;
 color: #222222;
 }
 
@@ -101,54 +101,96 @@ color: #222222;
 
 @media (max-width:1100px){
 
+/* container spacing */
+.scroll-container{
+gap:70px;
+padding:40px 30px;
+}
+
+/* artwork block */
 .scroll-item{
 height:auto;
 flex-direction:column;   /* stack text and image */
 align-items:flex-start;
-padding:20px;
+padding:20px 0;
 }
 
+/* title + description */
 .art-info{
 position:static;         /* remove absolute positioning */
 width:100%;
-margin-bottom:20px;      /* space before image */
+margin-top:30px;         /* space ABOVE title */
+margin-bottom:25px;      /* space BEFORE image */
 }
 
-.scroll-item img{
-height:auto;
-width:100%;
+/* title */
+.art-info h2{
+font-size:21px;
+margin-bottom:14px;
 }
 
-}
-@media (max-width:768px){
-
-.scroll-container{
-gap:20px;
-padding:20px;
+/* description */
+.art-info p{
+line-height:1.6;
+margin-bottom:12px;
 }
 
-.scroll-item{
-height:auto;
-flex-direction:column;
-align-items:flex-start;
-}
-
-.art-info{
-position:static;
-width:100%;
-margin-bottom:20px;
-}
-
+/* image */
 .scroll-item img{
 height:auto;
 width:100%;
 object-fit:contain;
 }
 
+}
+@media (max-width:768px){
+
+/* Container spacing between artworks */
+.scroll-container{
+    gap:90px;                 /* big space between artworks */
+    padding:40px 20px 60px;
+}
+
+/* Each artwork block */
+.scroll-item{
+    height:auto;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+/* Title + description block */
+.art-info{
+    position:static;
+    width:100%;
+    margin-top:40px;          /* space ABOVE title */
+    margin-bottom:30px;       /* space BEFORE image */
+}
+
+/* Title */
+.art-info h2{
+    font-size:20px;
+    margin-bottom:14px;
+}
+
+/* Description */
+.art-info p{
+    font-size:12pt;
+    line-height:1.6;
+    margin-bottom:12px;
+}
+
+/* Image */
+.scroll-item img{
+    height:auto;
+    width:100%;
+    object-fit:contain;
+}
+
+/* Contact button position */
 .top-right{
-top:20px;
-right:20px;
-font-size:11pt;
+    top:20px;
+    right:20px;
+    font-size:11pt;
 }
 
 }
@@ -269,64 +311,67 @@ font-size:11pt;
 
 /* legal links */
 
-.legal-links a {
-    display: block;
-    margin-top: 5px;
-}
-
+/* Legal links */
 .legal-links {
     margin-top: 1px;
     text-align: center;
+    font-family: 'Gabarito', sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
 }
 
 .legal-links a {
-    display: block;   
-    margin-bottom: 12px;
-    font-family: 'Gabarito', sans-serif;
-    font-weight: 700;
-    font-size: 12pt;
     text-decoration: none;
     color: #000;
+    display: inline-block;
+    margin: 0 5px;
 }
 
 .legal-links a:hover {
     opacity: 0.6;
 }
 
+.legal-links span {
+    margin: 0 5px;
+}
+
 
 
 /* Newsletter Inline Style */
 
+/* Newsletter Inline Style */
 .newsletter-inline {
-    /* margin: 80px 0; */
-     margin: 28px 0 70px;
+    margin: 28px 0 70px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 20px;  /* Reduced from 40px */
     flex-wrap: wrap;
     font-family: 'Gabarito', sans-serif;
+    width: 100%;
 }
 
 .newsletter-text {
     font-weight: 700;
     font-size: 18px;
+    white-space: nowrap;  /* Prevents text from wrapping */
 }
 
 .newsletter-form {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 10px;  /* Space between input and button */
 }
 
 .newsletter-form input {
     border: none;
+    border-bottom: 1px solid #ccc;
     background: transparent;
-    padding: 8px 0;
+    padding: 8px 5px;
     font-size: 18px;
     outline: none;
-    width: 180px;
-    color: #999;
+    width: 200px;  /* Slightly wider */
+    color: #000;
     font-family: 'Gabarito', sans-serif;
 }
 
@@ -340,13 +385,30 @@ font-size:11pt;
     font-weight: 700;
     font-size: 18px;
     cursor: pointer;
-    padding: 0;
+    padding: 8px 0;
     font-family: 'Gabarito', sans-serif;
-     margin-left: -50px;
+   
 }
 
 .newsletter-form button:hover {
     opacity: 0.6;
+}
+
+/* For mobile - stack when screen is small */
+@media (max-width: 600px) {
+    .newsletter-inline {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .newsletter-form {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .newsletter-form input {
+        width: 180px;
+    }
 }
 
 /* Needed for spinner positioning only */
