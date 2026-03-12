@@ -1,4 +1,3 @@
-
 // //new
 // // Save scroll position before leaving homepage
 // document.querySelectorAll('.scroll-item').forEach(item => {
@@ -171,6 +170,114 @@
 // });
 
 
+
+//new
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     const container = document.querySelector(".scroll-container");
+//     if (!container) return;
+
+//     /* ===============================
+//        PART 1: SAVE POSITION WHEN CLICKING CONTACT
+//     =============================== */
+    
+//     // Save position when clicking the contact button
+//     const contactLink = document.querySelector('.top-right a');
+//     if (contactLink) {
+//         contactLink.addEventListener('click', function(e) {
+//             const currentPos = window.scrollY;
+//             sessionStorage.setItem('scrollPosition', currentPos);
+//             console.log('✅ Position saved before going to contact:', currentPos);
+//             // Let the link work normally
+//             return true;
+//         });
+//     }
+
+//     /* ===============================
+//        PART 2: INFINITE SCROLL SETUP
+//     =============================== */
+    
+//     // Clone all artworks once for infinite effect
+//     const items = Array.from(container.children);
+//     items.forEach(item => {
+//         const clone = item.cloneNode(true);
+//         container.appendChild(clone);
+//     });
+
+//     // Function to get middle point
+//     function getMiddlePosition() {
+//         return container.scrollHeight / 2;
+//     }
+
+//     /* ===============================
+//        PART 3: RESTORE POSITION WHEN RETURNING
+//     =============================== */
+    
+//     const savedPos = sessionStorage.getItem('scrollPosition');
+    
+//     if (savedPos) {
+//         // We have a saved position - use it
+//         console.log('🔄 Restoring to saved position:', savedPos);
+//         window.scrollTo(0, parseInt(savedPos));
+        
+//         // Clear it after restoring so next fresh visit starts at middle
+//         sessionStorage.removeItem('scrollPosition');
+//     } else {
+//         // No saved position - start in middle
+//         console.log('Starting in middle');
+//         window.scrollTo(0, getMiddlePosition());
+//     }
+
+//     /* ===============================
+//        PART 4: INFINITE SCROLL BEHAVIOR
+//     =============================== */
+    
+//     let isLooping = false;
+
+//     window.addEventListener("scroll", function() {
+//         if (isLooping) return;
+
+//         const scrollY = window.scrollY;
+//         const middle = getMiddlePosition();
+//         const totalHeight = container.scrollHeight;
+//         const viewportHeight = window.innerHeight;
+
+//         // If we're at the bottom, jump to middle
+//         if (scrollY + viewportHeight >= totalHeight - 5) {
+//             isLooping = true;
+//             window.scrollTo(0, middle);
+//             setTimeout(() => isLooping = false, 50);
+//         }
+        
+//         // If we're at the top, jump to middle
+//         if (scrollY <= 5) {
+//             isLooping = true;
+//             window.scrollTo(0, middle);
+//             setTimeout(() => isLooping = false, 50);
+//         }
+//     });
+
+//     /* ===============================
+//        PART 5: IMAGE FADE-IN
+//     =============================== */
+    
+//     const images = document.querySelectorAll(".scroll-item img");
+//     images.forEach(img => {
+//         if (img.complete) {
+//             img.classList.add("loaded");
+//         } else {
+//             img.addEventListener("load", function() {
+//                 this.classList.add("loaded");
+//             });
+//         }
+//     });
+// });
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.querySelector(".scroll-container");
     if (!container) return;
@@ -230,30 +337,42 @@ document.addEventListener("DOMContentLoaded", function () {
        PART 4: INFINITE SCROLL BEHAVIOR
     =============================== */
     
-    let isLooping = false;
+    let isAdjusting = false;
 
-    window.addEventListener("scroll", function() {
-        if (isLooping) return;
+window.addEventListener("scroll", () => {
 
-        const scrollY = window.scrollY;
-        const middle = getMiddlePosition();
-        const totalHeight = container.scrollHeight;
-        const viewportHeight = window.innerHeight;
+    if (isAdjusting) return;
 
-        // If we're at the bottom, jump to middle
-        if (scrollY + viewportHeight >= totalHeight - 5) {
-            isLooping = true;
-            window.scrollTo(0, middle);
-            setTimeout(() => isLooping = false, 50);
-        }
-        
-        // If we're at the top, jump to middle
-        if (scrollY <= 5) {
-            isLooping = true;
-            window.scrollTo(0, middle);
-            setTimeout(() => isLooping = false, 50);
-        }
-    });
+    const scrollY = window.scrollY;
+    const halfHeight = container.scrollHeight / 2;
+
+    // near bottom
+    if (scrollY > halfHeight + container.offsetTop) {
+
+        isAdjusting = true;
+
+        window.scrollTo(0, scrollY - halfHeight);
+
+        requestAnimationFrame(() => {
+            isAdjusting = false;
+        });
+
+    }
+
+    // near top
+    if (scrollY < container.offsetTop + 5) {
+
+        isAdjusting = true;
+
+        window.scrollTo(0, scrollY + halfHeight);
+
+        requestAnimationFrame(() => {
+            isAdjusting = false;
+        });
+
+    }
+
+});
 
     /* ===============================
        PART 5: IMAGE FADE-IN
