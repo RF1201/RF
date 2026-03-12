@@ -276,107 +276,52 @@
 
 
 
+//new new
 
-
-document.addEventListener("DOMContentLoaded", function () {
-
+document.addEventListener("DOMContentLoaded", function() {
     const container = document.querySelector(".scroll-container");
     if (!container) return;
 
-    /* ===============================
-       SAVE POSITION WHEN CLICKING CONTACT
-    =============================== */
-
+    // Save position when clicking contact
     const contactLink = document.querySelector('.top-right a');
-
     if (contactLink) {
         contactLink.addEventListener('click', () => {
-            sessionStorage.setItem("scrollPosition", window.scrollY);
+            sessionStorage.setItem('scrollPos', window.scrollY);
         });
     }
 
-    /* ===============================
-       DUPLICATE ITEMS FOR LOOP
-    =============================== */
-
+    // Clone items for infinite scroll
     const items = Array.from(container.children);
+    items.forEach(item => container.appendChild(item.cloneNode(true)));
 
-    items.forEach(item => {
-        container.appendChild(item.cloneNode(true));
-    });
+    const itemHeight = window.innerHeight + 20; // approx height of one artwork + gap
 
-    const halfHeight = container.scrollHeight / 2;
-
-    /* ===============================
-       RESTORE POSITION
-    =============================== */
-
-    const saved = sessionStorage.getItem("scrollPosition");
-
-    if (saved) {
-        window.scrollTo(0, parseInt(saved));
-        sessionStorage.removeItem("scrollPosition");
+    // Restore position or start at beginning
+    const savedPos = sessionStorage.getItem('scrollPos');
+    if (savedPos) {
+        window.scrollTo(0, parseInt(savedPos));
+        sessionStorage.removeItem('scrollPos');
     } else {
-        window.scrollTo(0, halfHeight);
+        window.scrollTo(0, 0);
     }
 
-    /* ===============================
-       STABLE INFINITE SCROLL
-    =============================== */
+    // Simple infinite scroll check every 100ms
+    setInterval(() => {
+        const scrollY = window.scrollY;
+        const maxScroll = container.scrollHeight - window.innerHeight;
 
-    let isAdjusting = false;
-
-window.addEventListener("scroll", () => {
-
-    if (isAdjusting) return;
-
-    const scrollY = window.scrollY;
-    const halfHeight = container.scrollHeight / 2;
-
-    // bottom
-    if (scrollY > halfHeight * 1.8) {
-
-        isAdjusting = true;
-
-        window.scrollTo(0, scrollY - halfHeight);
-
-        setTimeout(() => {
-            isAdjusting = false;
-        }, 100);
-
-    }
-
-    // top
-    if (scrollY < halfHeight * 0.2) {
-
-        isAdjusting = true;
-
-        window.scrollTo(0, scrollY + halfHeight);
-
-        setTimeout(() => {
-            isAdjusting = false;
-        }, 100);
-
-    }
-
-});
-
-    /* ===============================
-       IMAGE FADE-IN
-    =============================== */
-
-    const images = document.querySelectorAll(".scroll-item img");
-
-    images.forEach(img => {
-
-        if (img.complete) {
-            img.classList.add("loaded");
-        } else {
-            img.addEventListener("load", () => {
-                img.classList.add("loaded");
-            });
+        if (scrollY >= maxScroll - 100) {
+            window.scrollTo(0, 100);
+        } else if (scrollY <= 100) {
+            window.scrollTo(0, maxScroll - 200);
         }
+    }, 100);
 
+    // Image fade in
+    document.querySelectorAll('.scroll-item img').forEach(img => {
+        if (img.complete) img.classList.add('loaded');
+        else img.addEventListener('load', () => img.classList.add('loaded'));
     });
-
 });
+
+
