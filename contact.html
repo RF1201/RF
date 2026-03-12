@@ -1,121 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regina Fröhlich - Contact</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regina Fröhlich - Contact</title>
 
-    <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Gabarito:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Gabarito:wght@700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
 <!-- Navigation -->
 <div class="top-left">
-    <a href="index.html">&lt;</a>
+<a href="index.html">&lt;</a>
 </div>
 
-<div class="top-right">
-    <a href="index.html">work</a>
-</div>
+<!-- <div class="top-right">
+<a href="index.html">work</a>
+</div> -->
 
-<!-- Contact Section -->
+
 <div class="contact-container">
 
-    <h1 class="contact-name">Regina Fröhlich</h1>
+<!-- PHOTO FIRST -->
+<div class="contact-image">
+<img src="assets/images/contact/contact-photo.jpg" alt="Regina Fröhlich">
+</div>
 
-    <div class="divider">—</div>
 
-    <p class="contact-bio">
-        painting is my way to process the world<br>
-        with its high highs<br>
-        low lows<br>
-        and the beauty in between<br>
-        taught me patience and curiosity<br>
-        to integrate each facet of me<br>
-        I'm forever exploring each form<br>
-        its depth and movement<br>
-        its sense and clarity throughout the chaos<br>
-        where being and becoming<br>
-        shape my view and work
-    </p>
+<!-- BIO -->
+<p class="contact-bio">
+painting is my way to process the world<br>
+with its high highs<br>
+low lows<br>
+and the beauty in between<br>
+taught me patience and curiosity<br>
+to integrate each facet of me<br>
+I'm forever exploring each form<br>
+its depth and movement<br>
+its sense and clarity throughout the chaos<br>
+where being and becoming<br>
+shape my view and work
+</p>
 
-    <div class="contact-initials">— RF —</div>
+<!-- RF -->
+<div class="contact-initials">— RF —</div>
 
-    <div class="contact-image">
-        <img src="assets/images/contact/contact-photo.jpg" alt="Regina Fröhlich">
-    </div>
+<!-- Inquiry -->
+<p class="contact-inquiry">
+For general inquiries about available art pieces and commissions,<br>
+feel free to message me.
+</p>
 
-    <p class="contact-inquiry">
-        For general inquiries about available art pieces and commissions,<br>
-        feel free to message me.
-    </p>
+<!-- NEW TEXT -->
+<p class="contact-signature">- Regina Fröhlich -</p>
 
-    <div class="contact-details">
-        <a href="mailto:info@reginafroehlich.com">info@reginafroehlich.com</a>
-        <a href="https://wa.me/4917622598767" target="_blank">
-            WhatsApp +49 17622598767
-        </a>
-    </div>
+<!-- Contact Links -->
+<div class="contact-details">
 
-<div class="newsletter-inline">
+<a href="mailto:info@reginafroehlich.com">
+info@reginafroehlich.com
+</a>
 
-    <div id="newsletter-text" class="newsletter-text">
-        Subscribe to newsletter
-    </div>
-
-    <form id="newsletter-form" class="newsletter-form">
-
-        <input type="email"
-               id="email"
-               placeholder="Enter Email"
-               required>
-
-        <button type="submit" id="newsletter-btn">
-            send
-        </button>
-
-    </form>
+<a href="https://wa.me/4917622598767" target="_blank">
+WhatsApp +49 17622598767
+</a>
 
 </div>
+
+
+<!-- Newsletter -->
+<div class="newsletter-inline">
+
+<div id="newsletter-text" class="newsletter-text">
+Subscribe to newsletter
+</div>
+
+<form id="newsletter-form" class="newsletter-form">
+
+<input type="email"
+id="email"
+placeholder="Enter Email"
+required>
+
+<button type="submit" id="newsletter-btn">
+send
+</button>
+
+</form>
+
+</div>
+
+
+<!-- Legal -->
+<div class="legal-links">
+<a href="privacy.html">Privacy Policy</a>
+<a href="imprint.html">Imprint</a>
+</div>
+
+</div>
+
 
 <script>
 document.getElementById("newsletter-form").addEventListener("submit", function(e) {
-    e.preventDefault(); // Prevent page reload
+e.preventDefault();
 
-    const email = document.getElementById("email").value;
-    const btn = document.getElementById("newsletter-btn");
+const email = document.getElementById("email").value;
+const btn = document.getElementById("newsletter-btn");
 
-    btn.disabled = true;
-    btn.textContent = "Sending...";
+btn.disabled = true;
+btn.textContent = "Sending...";
 
-    // Send the form data
-    fetch("https://59abbc9a.sibforms.com/serve/MUIFANBQEiNQEIWx5vQuQkIX1TCgW0yxVgcA2ZspbICQVBh09uRbiz1WLzLC_JH1D6fTFIgYCxBhy6HKUzFRRZ3K82AwGvjhLVfgv4Hmh2f-WCpj_rbOcZN8UzakLZ0TKG_Cma1E6O86nvP-9MeoQr0jIC1giAmUdLoH4ggHvbdnUgf_ZXBIK0zbmUKsmtJOHs3nWl9rUN_lvgTpgA==", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: "EMAIL=" + encodeURIComponent(email) +
-              "&email_address_check=" +
-              "&locale=en"
-    })
-    .finally(() => {
-        document.getElementById("newsletter-text").textContent = "Thanks for joining!";
-        btn.textContent = "Send";
-        btn.disabled = false;
-        document.getElementById("newsletter-form").reset();
-    });
+fetch("https://59abbc9a.sibforms.com/serve/MUIFANBQEiNQEIWx5vQuQkIX1TCgW0yxVgcA2ZspbICQVBh09uRbiz1WLzLC_JH1D6fTFIgYCxBhy6HKUzFRRZ3K82AwGvjhLVfgv4Hmh2f-WCpj_rbOcZN8UzakLZ0TKG_Cma1E6O86nvP-9MeoQr0jIC1giAmUdLoH4ggHvbdnUgf_ZXBIK0zbmUKsmtJOHs3nWl9rUN_lvgTpgA==", {
+method: "POST",
+headers: {
+"Content-Type": "application/x-www-form-urlencoded"
+},
+body: "EMAIL=" + encodeURIComponent(email) +
+"&email_address_check=" +
+"&locale=en"
+})
+.finally(() => {
+document.getElementById("newsletter-text").textContent = "Thanks for joining!";
+btn.textContent = "Send";
+btn.disabled = false;
+document.getElementById("newsletter-form").reset();
+});
 });
 </script>
 
-    <!-- Legal Links -->
-    <div class="legal-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="imprint.html">Imprint</a>
-    </div>
-
-</div>
 </body>
 </html>
