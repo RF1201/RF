@@ -278,50 +278,118 @@
 
 //new new
 
-document.addEventListener("DOMContentLoaded", function() {
+// document.addEventListener("DOMContentLoaded", function() {
+//     const container = document.querySelector(".scroll-container");
+//     if (!container) return;
+
+//     // Save position when clicking contact
+//     const contactLink = document.querySelector('.top-right a');
+//     if (contactLink) {
+//         contactLink.addEventListener('click', () => {
+//             sessionStorage.setItem('scrollPos', window.scrollY);
+//         });
+//     }
+
+//     // Clone items for infinite scroll
+//     const items = Array.from(container.children);
+//     items.forEach(item => container.appendChild(item.cloneNode(true)));
+
+//     const itemHeight = window.innerHeight + 20; // approx height of one artwork + gap
+
+//     // Restore position or start at beginning
+//     const savedPos = sessionStorage.getItem('scrollPos');
+//     if (savedPos) {
+//         window.scrollTo(0, parseInt(savedPos));
+//         sessionStorage.removeItem('scrollPos');
+//     } else {
+//         window.scrollTo(0, 0);
+//     }
+
+//     // Simple infinite scroll check every 100ms
+//     setInterval(() => {
+//         const scrollY = window.scrollY;
+//         const maxScroll = container.scrollHeight - window.innerHeight;
+
+//         if (scrollY >= maxScroll - 100) {
+//             window.scrollTo(0, 100);
+//         } else if (scrollY <= 100) {
+//             window.scrollTo(0, maxScroll - 200);
+//         }
+//     }, 100);
+
+//     // Image fade in
+//     document.querySelectorAll('.scroll-item img').forEach(img => {
+//         if (img.complete) img.classList.add('loaded');
+//         else img.addEventListener('load', () => img.classList.add('loaded'));
+//     });
+// });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
     const container = document.querySelector(".scroll-container");
     if (!container) return;
 
-    // Save position when clicking contact
     const contactLink = document.querySelector('.top-right a');
+
+    /* Save scroll position */
     if (contactLink) {
         contactLink.addEventListener('click', () => {
             sessionStorage.setItem('scrollPos', window.scrollY);
         });
     }
 
-    // Clone items for infinite scroll
-    const items = Array.from(container.children);
-    items.forEach(item => container.appendChild(item.cloneNode(true)));
-
-    const itemHeight = window.innerHeight + 20; // approx height of one artwork + gap
-
-    // Restore position or start at beginning
+    /* Restore scroll position */
     const savedPos = sessionStorage.getItem('scrollPos');
     if (savedPos) {
         window.scrollTo(0, parseInt(savedPos));
         sessionStorage.removeItem('scrollPos');
-    } else {
-        window.scrollTo(0, 0);
     }
 
-    // Simple infinite scroll check every 100ms
-    setInterval(() => {
-        const scrollY = window.scrollY;
-        const maxScroll = container.scrollHeight - window.innerHeight;
+    /* Store original items */
+    const originalItems = Array.from(container.children);
 
-        if (scrollY >= maxScroll - 100) {
-            window.scrollTo(0, 100);
-        } else if (scrollY <= 100) {
-            window.scrollTo(0, maxScroll - 200);
+    function appendMore() {
+
+        originalItems.forEach(item => {
+
+            const clone = item.cloneNode(true);
+
+            const img = clone.querySelector("img");
+
+            if (img) {
+                img.classList.remove("loaded");
+
+                if (img.complete) {
+                    img.classList.add("loaded");
+                } else {
+                    img.addEventListener("load", () => {
+                        img.classList.add("loaded");
+                    });
+                }
+            }
+
+            container.appendChild(clone);
+        });
+
+    }
+
+    /* Infinite scroll trigger */
+    window.addEventListener("scroll", () => {
+
+        const scrollBottom = window.scrollY + window.innerHeight;
+        const pageHeight = document.documentElement.scrollHeight;
+
+        if (scrollBottom > pageHeight - 1000) {
+            appendMore();
         }
-    }, 100);
 
-    // Image fade in
+    });
+
+    /* Initial image load */
     document.querySelectorAll('.scroll-item img').forEach(img => {
         if (img.complete) img.classList.add('loaded');
         else img.addEventListener('load', () => img.classList.add('loaded'));
     });
+
 });
-
-
