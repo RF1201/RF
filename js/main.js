@@ -325,36 +325,306 @@
 // });
 
 
-document.addEventListener("DOMContentLoaded", function () {
 
+//new
+
+// document.addEventListener("DOMContentLoaded", function () {
+
+//     const container = document.querySelector(".scroll-container");
+//     if (!container) return;
+
+//     const contactLink = document.querySelector('.top-right a');
+
+//     /* Save scroll position */
+//     if (contactLink) {
+//         contactLink.addEventListener('click', () => {
+//             sessionStorage.setItem('scrollPos', window.scrollY);
+//         });
+//     }
+
+//     /* Restore scroll position */
+//     const savedPos = sessionStorage.getItem('scrollPos');
+//     if (savedPos) {
+//         window.scrollTo(0, parseInt(savedPos));
+//         sessionStorage.removeItem('scrollPos');
+//     }
+
+//     /* Store original items */
+//     const originalItems = Array.from(container.children);
+
+//     function appendMore() {
+
+//         originalItems.forEach(item => {
+
+//             const clone = item.cloneNode(true);
+
+//             const img = clone.querySelector("img");
+
+//             if (img) {
+//                 img.classList.remove("loaded");
+
+//                 if (img.complete) {
+//                     img.classList.add("loaded");
+//                 } else {
+//                     img.addEventListener("load", () => {
+//                         img.classList.add("loaded");
+//                     });
+//                 }
+//             }
+
+//             container.appendChild(clone);
+//         });
+
+//     }
+
+//     /* Infinite scroll trigger */
+//     window.addEventListener("scroll", () => {
+
+//         const scrollBottom = window.scrollY + window.innerHeight;
+//         const pageHeight = document.documentElement.scrollHeight;
+
+//         if (scrollBottom > pageHeight - 1000) {
+//             appendMore();
+//         }
+
+//     });
+
+//     /* Initial image load */
+//     document.querySelectorAll('.scroll-item img').forEach(img => {
+//         if (img.complete) img.classList.add('loaded');
+//         else img.addEventListener('load', () => img.classList.add('loaded'));
+//     });
+
+// });
+
+
+
+
+//extra
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     const container = document.querySelector(".scroll-container");
+//     if (!container) return;
+
+//     const contactLink = document.querySelector('.top-right a');
+
+//     /* Save scroll position and current item count */
+//     if (contactLink) {
+//         contactLink.addEventListener('click', () => {
+//             sessionStorage.setItem('scrollPos', window.scrollY);
+//             sessionStorage.setItem('itemCount', container.children.length);
+//         });
+//     }
+
+//     /* Store original items */
+//     const originalItems = Array.from(container.children);
+//     let isAdding = false;
+
+//     function appendMore() {
+//         if (isAdding) return;
+//         isAdding = true;
+        
+//         originalItems.forEach(item => {
+//             const clone = item.cloneNode(true);
+//             const img = clone.querySelector("img");
+
+//             if (img) {
+//                 img.classList.remove("loaded");
+
+//                 if (img.complete) {
+//                     img.classList.add("loaded");
+//                 } else {
+//                     img.addEventListener("load", () => {
+//                         img.classList.add("loaded");
+//                     });
+//                 }
+//             }
+
+//             container.appendChild(clone);
+//         });
+        
+//         isAdding = false;
+//     }
+
+//     /* Restore scroll position */
+//     const savedPos = sessionStorage.getItem('scrollPos');
+//     const savedCount = sessionStorage.getItem('itemCount');
+    
+//     if (savedPos) {
+//         // If we had more items before, add enough sets to reach that count
+//         const currentCount = container.children.length;
+//         const setsToAdd = Math.ceil((savedCount - currentCount) / originalItems.length);
+        
+//         for (let i = 0; i < setsToAdd; i++) {
+//             appendMore();
+//         }
+        
+//         window.scrollTo(0, parseInt(savedPos));
+//         sessionStorage.removeItem('scrollPos');
+//         sessionStorage.removeItem('itemCount');
+//     }
+
+//     /* Infinite scroll trigger - continuously add sets */
+//     window.addEventListener("scroll", () => {
+//         const scrollBottom = window.scrollY + window.innerHeight;
+//         const pageHeight = document.documentElement.scrollHeight;
+
+//         // Add more content when near bottom
+//         if (scrollBottom > pageHeight - 1500) {
+//             appendMore();
+//         }
+//     });
+
+//     /* Initial image load */
+//     document.querySelectorAll('.scroll-item img').forEach(img => {
+//         if (img.complete) img.classList.add('loaded');
+//         else img.addEventListener('load', () => img.classList.add('loaded'));
+//     });
+// });
+
+
+
+//extra extra
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     const container = document.querySelector(".scroll-container");
+//     if (!container) return;
+
+//     const contactLink = document.querySelector('.top-right a');
+
+//     /* Save scroll position and current item count */
+//     if (contactLink) {
+//         contactLink.addEventListener('click', () => {
+//             sessionStorage.setItem('scrollPos', window.scrollY);
+//             sessionStorage.setItem('itemCount', container.children.length);
+//         });
+//     }
+
+//     /* Store original items */
+//     const originalItems = Array.from(container.children);
+//     let isAdding = false;
+
+//     function appendMore() {
+//         if (isAdding) return;
+//         isAdding = true;
+        
+//         originalItems.forEach(item => {
+//             const clone = item.cloneNode(true);
+//             const img = clone.querySelector("img");
+
+//             if (img) {
+//                 img.classList.remove("loaded");
+
+//                 if (img.complete) {
+//                     img.classList.add("loaded");
+//                 } else {
+//                     img.addEventListener("load", () => {
+//                         img.classList.add("loaded");
+//                     });
+//                 }
+//             }
+
+//             container.appendChild(clone);
+//         });
+        
+//         isAdding = false;
+//     }
+
+//     /* Safari resize fix - simple and reliable */
+//     let lastScrollY = 0;
+    
+//     window.addEventListener("resize", function() {
+//         // Store position before resize
+//         lastScrollY = window.scrollY;
+//     });
+    
+//     // Use requestAnimationFrame for smoother Safari rendering
+//     function checkResize() {
+//         if (lastScrollY !== 0) {
+//             window.scrollTo(0, lastScrollY);
+//             lastScrollY = 0;
+//         }
+//         requestAnimationFrame(checkResize);
+//     }
+//     requestAnimationFrame(checkResize);
+
+//     /* Restore scroll position */
+//     const savedPos = sessionStorage.getItem('scrollPos');
+//     const savedCount = sessionStorage.getItem('itemCount');
+    
+//     if (savedPos) {
+//         // If we had more items before, add enough sets to reach that count
+//         const currentCount = container.children.length;
+//         const setsToAdd = Math.ceil((savedCount - currentCount) / originalItems.length);
+        
+//         for (let i = 0; i < setsToAdd; i++) {
+//             appendMore();
+//         }
+        
+//         // Multiple attempts for Safari
+//         let attempts = 0;
+//         function tryScroll() {
+//             window.scrollTo(0, parseInt(savedPos));
+//             if (attempts < 5) {
+//                 attempts++;
+//                 setTimeout(tryScroll, 100);
+//             }
+//         }
+//         tryScroll();
+        
+//         sessionStorage.removeItem('scrollPos');
+//         sessionStorage.removeItem('itemCount');
+//     }
+
+//     /* Infinite scroll trigger */
+//     window.addEventListener("scroll", () => {
+//         const scrollBottom = window.scrollY + window.innerHeight;
+//         const pageHeight = document.documentElement.scrollHeight;
+
+//         if (scrollBottom > pageHeight - 1500) {
+//             appendMore();
+//         }
+//     }, { passive: true });
+
+//     /* Initial image load */
+//     document.querySelectorAll('.scroll-item img').forEach(img => {
+//         if (img.complete) img.classList.add('loaded');
+//         else img.addEventListener('load', () => img.classList.add('loaded'));
+//     });
+// });
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
     const container = document.querySelector(".scroll-container");
     if (!container) return;
 
     const contactLink = document.querySelector('.top-right a');
 
-    /* Save scroll position */
+    /* Save scroll position and current item count */
     if (contactLink) {
         contactLink.addEventListener('click', () => {
             sessionStorage.setItem('scrollPos', window.scrollY);
+            sessionStorage.setItem('itemCount', container.children.length);
         });
-    }
-
-    /* Restore scroll position */
-    const savedPos = sessionStorage.getItem('scrollPos');
-    if (savedPos) {
-        window.scrollTo(0, parseInt(savedPos));
-        sessionStorage.removeItem('scrollPos');
     }
 
     /* Store original items */
     const originalItems = Array.from(container.children);
+    let isAdding = false;
 
     function appendMore() {
-
+        if (isAdding) return;
+        isAdding = true;
+        
         originalItems.forEach(item => {
-
             const clone = item.cloneNode(true);
-
             const img = clone.querySelector("img");
 
             if (img) {
@@ -371,19 +641,93 @@ document.addEventListener("DOMContentLoaded", function () {
 
             container.appendChild(clone);
         });
-
+        
+        isAdding = false;
     }
 
-    /* Infinite scroll trigger */
-    window.addEventListener("scroll", () => {
+    /* Restore scroll position */
+    const savedPos = sessionStorage.getItem('scrollPos');
+    const savedCount = sessionStorage.getItem('itemCount');
+    
+    if (savedPos) {
+        // If we had more items before, add enough sets to reach that count
+        const currentCount = container.children.length;
+        const setsToAdd = Math.ceil((savedCount - currentCount) / originalItems.length);
+        
+        for (let i = 0; i < setsToAdd; i++) {
+            appendMore();
+        }
+        
+        window.scrollTo(0, parseInt(savedPos));
+        sessionStorage.removeItem('scrollPos');
+        sessionStorage.removeItem('itemCount');
+    }
 
+    /* Infinite scroll trigger - continuously add sets */
+    window.addEventListener("scroll", () => {
         const scrollBottom = window.scrollY + window.innerHeight;
         const pageHeight = document.documentElement.scrollHeight;
 
-        if (scrollBottom > pageHeight - 1000) {
+        // Add more content when near bottom
+        if (scrollBottom > pageHeight - 1500) {
             appendMore();
         }
+    });
 
+    /* Safari resize fix - works with clones */
+    let scrollPosition = 0;
+    let currentImageIndex = 0;
+    
+    function updateCurrentImageIndex() {
+        const scrollY = window.scrollY;
+        const items = document.querySelectorAll('.scroll-item');
+        
+        for (let i = 0; i < items.length; i++) {
+            const item = items[i];
+            const itemTop = item.offsetTop;
+            const itemBottom = itemTop + item.offsetHeight;
+            
+            if (scrollY >= itemTop && scrollY < itemBottom) {
+                currentImageIndex = i % originalItems.length;
+                scrollPosition = scrollY - itemTop;
+                break;
+            }
+        }
+    }
+    
+    // Update index on scroll
+    window.addEventListener("scroll", () => {
+        updateCurrentImageIndex();
+    });
+    
+    // Handle resize
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        
+        // Store which image we're on before resize
+        const beforeIndex = currentImageIndex;
+        const beforeOffset = scrollPosition;
+        
+        resizeTimer = setTimeout(() => {
+            // Find that same image in the new layout
+            const items = document.querySelectorAll('.scroll-item');
+            let targetIndex = beforeIndex;
+            
+            // Look for the same image (by its content)
+            for (let i = 0; i < items.length; i++) {
+                if (i % originalItems.length === beforeIndex) {
+                    targetIndex = i;
+                    break;
+                }
+            }
+            
+            // Scroll to that image + stored offset
+            const targetItem = items[targetIndex];
+            if (targetItem) {
+                window.scrollTo(0, targetItem.offsetTop + beforeOffset);
+            }
+        }, 200);
     });
 
     /* Initial image load */
@@ -391,5 +735,4 @@ document.addEventListener("DOMContentLoaded", function () {
         if (img.complete) img.classList.add('loaded');
         else img.addEventListener('load', () => img.classList.add('loaded'));
     });
-
 });

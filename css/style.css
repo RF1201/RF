@@ -147,6 +147,58 @@ object-fit:contain;
 }
 
 }
+
+/* @media (max-width:768px){
+
+.scroll-container{
+    gap:90px;                 
+    padding:40px 20px 60px;
+}
+
+.scroll-item{
+    height:auto;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.art-info{
+    position:static;
+    width:100%;
+    margin-top:40px;          
+    margin-bottom:30px;       
+}
+
+
+.art-info h2{
+    font-size:20px;
+    margin-bottom:14px;
+}
+
+
+.art-info p{
+    font-size:12pt;
+    line-height:1.6;
+    margin-bottom:12px;
+}
+
+
+.scroll-item img{
+    height:auto;
+    width:100%;
+    object-fit:contain;
+}
+
+
+.top-right{
+    top:20px;
+    right:20px;
+    font-size:11pt;
+}
+
+} */
+
+
+
 @media (max-width:768px){
 
 /* Container spacing between artworks */
@@ -162,12 +214,21 @@ object-fit:contain;
     align-items:flex-start;
 }
 
-/* Title + description block */
+/* Title + description block - MOVED BELOW IMAGE */
 .art-info{
     position:static;
     width:100%;
-    margin-top:40px;          /* space ABOVE title */
-    margin-bottom:30px;       /* space BEFORE image */
+    margin-top:20px;          /* space AFTER image */
+    margin-bottom:0;       
+    order: 2;                  /* Ensures it appears after image */
+}
+
+/* Image - ENSURE IT APPEARS FIRST */
+.scroll-item img{
+    height:auto;
+    width:100%;
+    object-fit:contain;
+    order: 1;                  /* Ensures image appears first */
 }
 
 /* Title */
@@ -183,13 +244,6 @@ object-fit:contain;
     margin-bottom:12px;
 }
 
-/* Image */
-.scroll-item img{
-    height:auto;
-    width:100%;
-    object-fit:contain;
-}
-
 /* Contact button position */
 .top-right{
     top:20px;
@@ -198,6 +252,18 @@ object-fit:contain;
 }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Contact Page */
@@ -369,7 +435,6 @@ object-fit:contain;
 
 .newsletter-form input {
     border: none;
-    border-bottom: 1px solid #ccc;
     background: transparent;
     padding: 8px 5px;
     font-size: 18px;
@@ -399,7 +464,7 @@ object-fit:contain;
 }
 
 /* For mobile - stack when screen is small */
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
     .newsletter-inline {
         flex-direction: column;
         gap: 15px;
@@ -413,7 +478,42 @@ object-fit:contain;
     .newsletter-form input {
         width: 180px;
     }
+} */
+
+/* Fix for mobile newsletter button */
+@media (max-width: 600px) {
+    .newsletter-inline {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .newsletter-form {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+    }
+    
+    .newsletter-form input {
+        width: 180px;
+        min-width: 150px;
+        flex-shrink: 1;
+    };
+    
+    .newsletter-form button {
+        width: auto;
+        min-width: 70px;
+        flex-shrink: 0;
+        padding: 8px 10px;
+        white-space: nowrap;
+    }
 }
+
+
 
 /* Needed for spinner positioning only */
 .scroll-item,
