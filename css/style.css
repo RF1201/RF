@@ -585,66 +585,50 @@ object-fit:contain;
 } */
 
 /* Fix for mobile newsletter button */
-/* Fix for mobile newsletter button */
 @media (max-width: 600px) {
     .newsletter-inline {
-        display: flex;
         flex-direction: column;
-        align-items: center;
         gap: 15px;
         width: 100%;
-    }
-    
-    .newsletter-text {
-        font-size: 18px;
-        margin-bottom: 5px;
     }
     
     .newsletter-form {
         display: flex !important;
         flex-direction: row !important;
-        align-items: center !important;
+        flex-wrap: nowrap !important;
         justify-content: center !important;
-        gap: 10px !important;
+        align-items: center !important;
         width: 100% !important;
+        gap: 10px !important;
     }
     
     .newsletter-form input {
-        width: 160px !important;
-        padding: 8px 5px !important;
-        font-size: 16px !important;
-        border: none !important;
-        border-bottom: 1px solid #ccc !important;
-        background: transparent !important;
+        width: 180px !important;
+        min-width: 150px !important;
+        flex-shrink: 1 !important;
         display: inline-block !important;
     }
     
     .newsletter-form button {
         width: auto !important;
-        min-width: 60px !important;
+        min-width: 70px !important;
+        flex-shrink: 0 !important;
         padding: 8px 10px !important;
-        font-size: 16px !important;
-        font-weight: 700 !important;
-        background: none !important;
-        border: none !important;
-        cursor: pointer !important;
-        display: inline-block !important;
-        color: #000 !important;
         white-space: nowrap !important;
+        display: inline-block !important;
+        background: transparent !important;
+        border: none !important;
+        font-weight: 700 !important;
+        font-size: 18px !important;
+        cursor: pointer !important;
+        color: #000 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
     
     .newsletter-form button:hover {
         opacity: 0.6 !important;
     }
-    /* TEST - Force button to show */
-#newsletter-btn {
-    display: block !important;
-    background-color: red !important;
-    color: white !important;
-    padding: 10px !important;
-    margin: 10px !important;
-    font-size: 16px !important;
-}
 }
 
 
