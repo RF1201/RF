@@ -939,8 +939,93 @@
 // });
 
 
-document.addEventListener("DOMContentLoaded", function () {
+// document.addEventListener("DOMContentLoaded", function () {
+//     const container = document.querySelector(".scroll-container");
+//     if (!container) return;
 
+//     const contactLink = document.querySelector(".top-right a");
+//     const originalItems = Array.from(container.children);
+
+//     let isAdding = false;
+
+//     function appendMore() {
+//         if (isAdding) return;
+//         isAdding = true;
+
+//         originalItems.forEach(item => {
+//             const clone = item.cloneNode(true);
+//             const img = clone.querySelector("img");
+
+//             if (img) {
+//                 img.classList.remove("loaded");
+//                 if (img.complete) {
+//                     img.classList.add("loaded");
+//                 } else {
+//                     img.addEventListener("load", () => {
+//                         img.classList.add("loaded");
+//                     });
+//                 }
+//             }
+
+//             container.appendChild(clone);
+//         });
+
+//         isAdding = false;
+//     }
+
+//     // Save scroll position
+//     if (contactLink) {
+//         contactLink.addEventListener("click", () => {
+//             sessionStorage.setItem("scrollPos", window.scrollY);
+//             sessionStorage.setItem("itemCount", container.children.length);
+//         });
+//     }
+
+//     // Restore scroll position
+//     const savedScroll = sessionStorage.getItem("scrollPos");
+//     const savedCount = sessionStorage.getItem("itemCount");
+
+//     if (savedScroll) {
+//         // Add items if needed
+//         const currentCount = container.children.length;
+//         if (savedCount > currentCount) {
+//             const setsNeeded = Math.ceil((savedCount - currentCount) / originalItems.length);
+//             for (let i = 0; i < setsNeeded; i++) {
+//                 appendMore();
+//             }
+//         }
+
+//         // Try multiple times for Safari
+//         const attempts = [300, 600, 1000, 1500];
+//         attempts.forEach(delay => {
+//             setTimeout(() => {
+//                 window.scrollTo(0, parseInt(savedScroll));
+//             }, delay);
+//         });
+
+//         sessionStorage.removeItem("scrollPos");
+//         sessionStorage.removeItem("itemCount");
+//     }
+
+//     // Infinite scroll
+//     window.addEventListener("scroll", () => {
+//         const scrollBottom = window.scrollY + window.innerHeight;
+//         const pageHeight = document.documentElement.scrollHeight;
+
+//         if (scrollBottom > pageHeight - 1500) {
+//             appendMore();
+//         }
+//     });
+
+//     // Image fade in
+//     document.querySelectorAll(".scroll-item img").forEach(img => {
+//         if (img.complete) img.classList.add("loaded");
+//         else img.addEventListener("load", () => img.classList.add("loaded"));
+//     });
+// });
+
+
+document.addEventListener("DOMContentLoaded", function () {
     const container = document.querySelector(".scroll-container");
     if (!container) return;
 
@@ -949,24 +1034,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let isAdding = false;
 
-    /* -----------------------------
-       APPEND MORE ITEMS
-    ------------------------------*/
-
     function appendMore() {
-
         if (isAdding) return;
         isAdding = true;
 
         originalItems.forEach(item => {
-
             const clone = item.cloneNode(true);
             const img = clone.querySelector("img");
 
             if (img) {
-
                 img.classList.remove("loaded");
-
                 if (img.complete) {
                     img.classList.add("loaded");
                 } else {
@@ -974,11 +1051,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         img.classList.add("loaded");
                     });
                 }
-
             }
 
             container.appendChild(clone);
-
         });
 
         isAdding = false;
@@ -986,78 +1061,59 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* -----------------------------
        SAVE SCROLL POSITION
-    ------------------------------*/
+    ----------------------------- */
 
     if (contactLink) {
-
         contactLink.addEventListener("click", () => {
-
-            sessionStorage.setItem("scrollPosition", window.scrollY);
-            sessionStorage.setItem("pageHeight", document.documentElement.scrollHeight);
-
+            sessionStorage.setItem("scrollPos", window.scrollY);
+            sessionStorage.setItem("itemCount", container.children.length);
         });
-
     }
 
     /* -----------------------------
-       RESTORE POSITION
-    ------------------------------*/
+       RESTORE SCROLL POSITION
+    ----------------------------- */
 
-    const savedScroll = sessionStorage.getItem("scrollPosition");
-    const savedHeight = sessionStorage.getItem("pageHeight");
+    const savedScroll = sessionStorage.getItem("scrollPos");
+    const savedCount = sessionStorage.getItem("itemCount");
 
-    if (savedScroll !== null) {
-
-        window.addEventListener("load", () => {
-
-            const currentHeight = document.documentElement.scrollHeight;
-
-            /* recreate enough cloned sets */
-            if (savedHeight > currentHeight) {
-
-                const diff = savedHeight - currentHeight;
-                const avgBlock = originalItems[0].offsetHeight * originalItems.length;
-
-                const setsNeeded = Math.ceil(diff / avgBlock);
-
-                for (let i = 0; i < setsNeeded; i++) {
-                    appendMore();
-                }
-
+    if (savedScroll) {
+        // Add items if needed
+        const currentCount = container.children.length;
+        if (savedCount > currentCount) {
+            const setsNeeded = Math.ceil((savedCount - currentCount) / originalItems.length);
+            for (let i = 0; i < setsNeeded; i++) {
+                appendMore();
             }
+        }
 
-            setTimeout(() => {
-                window.scrollTo(0, parseInt(savedScroll));
-            }, 200);
+        // Single scroll attempt with small delay
+        setTimeout(() => {
+            window.scrollTo(0, parseInt(savedScroll));
+        }, 200);
 
-        });
-
-        sessionStorage.removeItem("scrollPosition");
-        sessionStorage.removeItem("pageHeight");
-
+        sessionStorage.removeItem("scrollPos");
+        sessionStorage.removeItem("itemCount");
     }
 
     /* -----------------------------
        INFINITE SCROLL
-    ------------------------------*/
+    ----------------------------- */
 
     window.addEventListener("scroll", () => {
-
         const scrollBottom = window.scrollY + window.innerHeight;
         const pageHeight = document.documentElement.scrollHeight;
 
         if (scrollBottom > pageHeight - 1500) {
             appendMore();
         }
-
     });
 
     /* -----------------------------
-       IMAGE FADE IN
-    ------------------------------*/
+       IMAGE FADE-IN
+    ----------------------------- */
 
     document.querySelectorAll(".scroll-item img").forEach(img => {
-
         if (img.complete) {
             img.classList.add("loaded");
         } else {
@@ -1065,7 +1121,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 img.classList.add("loaded");
             });
         }
-
     });
-
 });
