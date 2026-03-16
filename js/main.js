@@ -599,35 +599,372 @@
 
 
 
+//new extra
+// document.addEventListener("DOMContentLoaded", function () {
+
+//     const container = document.querySelector(".scroll-container");
+//     if (!container) return;
+
+//     const contactLink = document.querySelector('.top-right a');
+
+//     /* Save scroll position */
+//     if (contactLink) {
+//         contactLink.addEventListener('click', () => {
+//             sessionStorage.setItem('scrollPos', window.scrollY);
+//             sessionStorage.setItem('itemCount', container.children.length);
+//         });
+//     }
+
+//     /* Store original items */
+//     const originalItems = Array.from(container.children);
+//     const originalLength = originalItems.length;
+
+//     /* Give every original item a stable id */
+//     originalItems.forEach((item, i) => {
+//         item.dataset.id = i;
+//     });
+
+//     let isAdding = false;
+
+//     function appendMore() {
+
+//         if (isAdding) return;
+//         isAdding = true;
+
+//         originalItems.forEach(item => {
+
+//             const clone = item.cloneNode(true);
+//             const img = clone.querySelector("img");
+
+//             if (img) {
+
+//                 img.classList.remove("loaded");
+
+//                 if (img.complete) {
+//                     img.classList.add("loaded");
+//                 } else {
+//                     img.addEventListener("load", () => img.classList.add("loaded"));
+//                 }
+
+//             }
+
+//             container.appendChild(clone);
+
+//         });
+
+//         isAdding = false;
+
+//     }
+
+//     /* Restore scroll position */
+
+//     const savedPos = sessionStorage.getItem('scrollPos');
+//     const savedCount = sessionStorage.getItem('itemCount');
+
+//     if (savedPos) {
+
+//         const currentCount = container.children.length;
+//         const setsToAdd = Math.ceil((savedCount - currentCount) / originalLength);
+
+//         for (let i = 0; i < setsToAdd; i++) {
+//             appendMore();
+//         }
+
+//         window.scrollTo(0, parseInt(savedPos));
+
+//         sessionStorage.removeItem('scrollPos');
+//         sessionStorage.removeItem('itemCount');
+
+//     }
+
+//     /* Infinite scroll */
+
+//     window.addEventListener("scroll", () => {
+
+//         const scrollBottom = window.scrollY + window.innerHeight;
+//         const pageHeight = document.documentElement.scrollHeight;
+
+//         if (scrollBottom > pageHeight - 1500) {
+//             appendMore();
+//         }
+
+//     });
+
+//     /* -------- RESIZE FIX -------- */
+
+//     let resizeTimer;
+//     let targetId = null;
+//     let offset = 0;
+
+//     function getCenterItem() {
+
+//         const centerY = window.scrollY + (window.innerHeight / 2);
+//         const items = document.querySelectorAll(".scroll-item");
+
+//         for (let item of items) {
+
+//             const top = item.offsetTop;
+//             const bottom = top + item.offsetHeight;
+
+//             if (centerY >= top && centerY <= bottom) {
+
+//                 return {
+//                     id: item.dataset.id,
+//                     offset: centerY - top
+//                 };
+
+//             }
+//         }
+
+//         return null;
+
+//     }
+
+//     window.addEventListener("resize", () => {
+
+//         const current = getCenterItem();
+
+//         if (current) {
+//             targetId = current.id;
+//             offset = current.offset;
+//         }
+
+//         clearTimeout(resizeTimer);
+
+//         resizeTimer = setTimeout(() => {
+
+//             const items = document.querySelectorAll(".scroll-item");
+
+//             for (let item of items) {
+
+//                 if (item.dataset.id === targetId) {
+
+//                     window.scrollTo(
+//                         0,
+//                         item.offsetTop + offset - (window.innerHeight / 2)
+//                     );
+
+//                     break;
+//                 }
+
+//             }
+
+//         }, 250);
+
+//     });
+
+//     /* Initial image load */
+
+//     document.querySelectorAll(".scroll-item img").forEach(img => {
+
+//         if (img.complete) {
+//             img.classList.add("loaded");
+//         } else {
+//             img.addEventListener("load", () => img.classList.add("loaded"));
+//         }
+
+//     });
+
+// });
+
+
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+
+//     const container = document.querySelector(".scroll-container");
+//     if (!container) return;
+
+//     const contactLink = document.querySelector(".top-right a");
+
+//     const originalItems = Array.from(container.children);
+//     let isAdding = false;
+
+//     /* -----------------------------
+//        APPEND MORE ITEMS (INFINITE)
+//     ------------------------------*/
+
+//     function appendMore() {
+
+//         if (isAdding) return;
+//         isAdding = true;
+
+//         originalItems.forEach(item => {
+
+//             const clone = item.cloneNode(true);
+//             const img = clone.querySelector("img");
+
+//             if (img) {
+
+//                 img.classList.remove("loaded");
+
+//                 if (img.complete) {
+//                     img.classList.add("loaded");
+//                 } else {
+//                     img.addEventListener("load", () => {
+//                         img.classList.add("loaded");
+//                     });
+//                 }
+
+//             }
+
+//             container.appendChild(clone);
+
+//         });
+
+//         isAdding = false;
+
+//     }
+
+//     /* -----------------------------
+//        SAVE POSITION BEFORE LEAVING
+//     ------------------------------*/
+
+//     if (contactLink) {
+
+//         contactLink.addEventListener("click", () => {
+
+//             const items = document.querySelectorAll(".scroll-item");
+//             const scrollY = window.scrollY;
+
+//             let index = 0;
+//             let offset = 0;
+
+//             for (let i = 0; i < items.length; i++) {
+
+//                 const top = items[i].offsetTop;
+//                 const bottom = top + items[i].offsetHeight;
+
+//                 if (scrollY >= top && scrollY < bottom) {
+
+//                     index = i % originalItems.length;
+//                     offset = scrollY - top;
+//                     break;
+
+//                 }
+
+//             }
+
+//             sessionStorage.setItem("imageIndex", index);
+//             sessionStorage.setItem("imageOffset", offset);
+//             sessionStorage.setItem("itemCount", container.children.length);
+
+//         });
+
+//     }
+
+//     /* -----------------------------
+//        RESTORE POSITION
+//     ------------------------------*/
+
+//     const savedIndex = sessionStorage.getItem("imageIndex");
+//     const savedOffset = sessionStorage.getItem("imageOffset");
+//     const savedCount = sessionStorage.getItem("itemCount");
+
+//     if (savedIndex !== null) {
+
+//         const currentCount = container.children.length;
+
+//         const setsToAdd = Math.ceil(
+//             (savedCount - currentCount) / originalItems.length
+//         );
+
+//         for (let i = 0; i < setsToAdd; i++) {
+//             appendMore();
+//         }
+
+//         function restoreScroll() {
+
+//             const items = document.querySelectorAll(".scroll-item");
+
+//             for (let i = 0; i < items.length; i++) {
+
+//                 if (i % originalItems.length == savedIndex) {
+
+//                     window.scrollTo(
+//                         0,
+//                         items[i].offsetTop + parseInt(savedOffset)
+//                     );
+
+//                     break;
+//                 }
+
+//             }
+
+//         }
+
+//         /* wait for layout + images on mobile */
+
+//         window.addEventListener("load", () => {
+//             setTimeout(restoreScroll, 200);
+//         });
+
+//         sessionStorage.removeItem("imageIndex");
+//         sessionStorage.removeItem("imageOffset");
+//         sessionStorage.removeItem("itemCount");
+
+//     }
+
+//     /* -----------------------------
+//        INFINITE SCROLL TRIGGER
+//     ------------------------------*/
+
+//     window.addEventListener("scroll", () => {
+
+//         const scrollBottom = window.scrollY + window.innerHeight;
+//         const pageHeight = document.documentElement.scrollHeight;
+
+//         if (scrollBottom > pageHeight - 1500) {
+//             appendMore();
+//         }
+
+//     });
+
+//     /* -----------------------------
+//        IMAGE LOAD HANDLING
+//     ------------------------------*/
+
+//     document.querySelectorAll(".scroll-item img").forEach(img => {
+
+//         if (img.complete) {
+//             img.classList.add("loaded");
+//         } else {
+//             img.addEventListener("load", () => {
+//                 img.classList.add("loaded");
+//             });
+//         }
+
+//     });
+
+// });
 
 
 document.addEventListener("DOMContentLoaded", function () {
+
     const container = document.querySelector(".scroll-container");
     if (!container) return;
 
-    const contactLink = document.querySelector('.top-right a');
-
-    /* Save scroll position and current item count */
-    if (contactLink) {
-        contactLink.addEventListener('click', () => {
-            sessionStorage.setItem('scrollPos', window.scrollY);
-            sessionStorage.setItem('itemCount', container.children.length);
-        });
-    }
-
-    /* Store original items */
+    const contactLink = document.querySelector(".top-right a");
     const originalItems = Array.from(container.children);
+
     let isAdding = false;
 
+    /* -----------------------------
+       APPEND MORE ITEMS
+    ------------------------------*/
+
     function appendMore() {
+
         if (isAdding) return;
         isAdding = true;
-        
+
         originalItems.forEach(item => {
+
             const clone = item.cloneNode(true);
             const img = clone.querySelector("img");
 
             if (img) {
+
                 img.classList.remove("loaded");
 
                 if (img.complete) {
@@ -637,102 +974,98 @@ document.addEventListener("DOMContentLoaded", function () {
                         img.classList.add("loaded");
                     });
                 }
+
             }
 
             container.appendChild(clone);
+
         });
-        
+
         isAdding = false;
     }
 
-    /* Restore scroll position */
-    const savedPos = sessionStorage.getItem('scrollPos');
-    const savedCount = sessionStorage.getItem('itemCount');
-    
-    if (savedPos) {
-        // If we had more items before, add enough sets to reach that count
-        const currentCount = container.children.length;
-        const setsToAdd = Math.ceil((savedCount - currentCount) / originalItems.length);
-        
-        for (let i = 0; i < setsToAdd; i++) {
-            appendMore();
-        }
-        
-        window.scrollTo(0, parseInt(savedPos));
-        sessionStorage.removeItem('scrollPos');
-        sessionStorage.removeItem('itemCount');
+    /* -----------------------------
+       SAVE SCROLL POSITION
+    ------------------------------*/
+
+    if (contactLink) {
+
+        contactLink.addEventListener("click", () => {
+
+            sessionStorage.setItem("scrollPosition", window.scrollY);
+            sessionStorage.setItem("pageHeight", document.documentElement.scrollHeight);
+
+        });
+
     }
 
-    /* Infinite scroll trigger - continuously add sets */
+    /* -----------------------------
+       RESTORE POSITION
+    ------------------------------*/
+
+    const savedScroll = sessionStorage.getItem("scrollPosition");
+    const savedHeight = sessionStorage.getItem("pageHeight");
+
+    if (savedScroll !== null) {
+
+        window.addEventListener("load", () => {
+
+            const currentHeight = document.documentElement.scrollHeight;
+
+            /* recreate enough cloned sets */
+            if (savedHeight > currentHeight) {
+
+                const diff = savedHeight - currentHeight;
+                const avgBlock = originalItems[0].offsetHeight * originalItems.length;
+
+                const setsNeeded = Math.ceil(diff / avgBlock);
+
+                for (let i = 0; i < setsNeeded; i++) {
+                    appendMore();
+                }
+
+            }
+
+            setTimeout(() => {
+                window.scrollTo(0, parseInt(savedScroll));
+            }, 200);
+
+        });
+
+        sessionStorage.removeItem("scrollPosition");
+        sessionStorage.removeItem("pageHeight");
+
+    }
+
+    /* -----------------------------
+       INFINITE SCROLL
+    ------------------------------*/
+
     window.addEventListener("scroll", () => {
+
         const scrollBottom = window.scrollY + window.innerHeight;
         const pageHeight = document.documentElement.scrollHeight;
 
-        // Add more content when near bottom
         if (scrollBottom > pageHeight - 1500) {
             appendMore();
         }
+
     });
 
-    /* Safari resize fix - works with clones */
-    let scrollPosition = 0;
-    let currentImageIndex = 0;
-    
-    function updateCurrentImageIndex() {
-        const scrollY = window.scrollY;
-        const items = document.querySelectorAll('.scroll-item');
-        
-        for (let i = 0; i < items.length; i++) {
-            const item = items[i];
-            const itemTop = item.offsetTop;
-            const itemBottom = itemTop + item.offsetHeight;
-            
-            if (scrollY >= itemTop && scrollY < itemBottom) {
-                currentImageIndex = i % originalItems.length;
-                scrollPosition = scrollY - itemTop;
-                break;
-            }
+    /* -----------------------------
+       IMAGE FADE IN
+    ------------------------------*/
+
+    document.querySelectorAll(".scroll-item img").forEach(img => {
+
+        if (img.complete) {
+            img.classList.add("loaded");
+        } else {
+            img.addEventListener("load", () => {
+                img.classList.add("loaded");
+            });
         }
-    }
-    
-    // Update index on scroll
-    window.addEventListener("scroll", () => {
-        updateCurrentImageIndex();
-    });
-    
-    // Handle resize
-    let resizeTimer;
-    window.addEventListener("resize", () => {
-        clearTimeout(resizeTimer);
-        
-        // Store which image we're on before resize
-        const beforeIndex = currentImageIndex;
-        const beforeOffset = scrollPosition;
-        
-        resizeTimer = setTimeout(() => {
-            // Find that same image in the new layout
-            const items = document.querySelectorAll('.scroll-item');
-            let targetIndex = beforeIndex;
-            
-            // Look for the same image (by its content)
-            for (let i = 0; i < items.length; i++) {
-                if (i % originalItems.length === beforeIndex) {
-                    targetIndex = i;
-                    break;
-                }
-            }
-            
-            // Scroll to that image + stored offset
-            const targetItem = items[targetIndex];
-            if (targetItem) {
-                window.scrollTo(0, targetItem.offsetTop + beforeOffset);
-            }
-        }, 200);
+
     });
 
-    /* Initial image load */
-    document.querySelectorAll('.scroll-item img').forEach(img => {
-        if (img.complete) img.classList.add('loaded');
-        else img.addEventListener('load', () => img.classList.add('loaded'));
-    });
 });

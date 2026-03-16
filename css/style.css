@@ -320,6 +320,41 @@ object-fit:contain;
     display: block;
 }
 
+
+/* Inquiry */
+/* .contact-inquiry {
+    font-family: 'Gabarito', sans-serif;
+    font-weight: 700;
+    font-size: 13pt;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+@media (max-width:600px){
+
+.contact-inquiry{
+    text-align:center;
+    font-family:'Gabarito', sans-serif;
+    font-weight:700;
+    font-size:13pt;
+    line-height:1.7;
+}
+
+.contact-inquiry span{
+    display:block;
+}
+
+.line1{
+    margin-bottom:4px;
+}
+
+.line2{
+    margin-bottom:4px;
+}
+
+} */
+
+
 /* Inquiry */
 .contact-inquiry {
     font-family: 'Gabarito', sans-serif;
@@ -328,6 +363,42 @@ object-fit:contain;
     line-height: 1.6;
     margin-bottom: 15px;
 }
+
+/* Desktop */
+.contact-inquiry span{
+    display:inline;
+}
+
+.desktop-break{
+    display:block;
+}
+
+/* Mobile */
+@media (max-width:600px){
+
+.contact-inquiry{
+    text-align:center;
+    line-height:1.7;
+}
+
+.contact-inquiry span{
+    display:block;
+}
+
+.desktop-break{
+    display:none;
+}
+
+.line1{
+    margin-bottom:4px;
+}
+
+.line2{
+    margin-bottom:4px;
+}
+
+}
+
 
 /* Contact links */
 .contact-details {
@@ -502,7 +573,7 @@ object-fit:contain;
         width: 180px;
         min-width: 150px;
         flex-shrink: 1;
-    };
+    }
     
     .newsletter-form button {
         width: auto;
