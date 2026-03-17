@@ -59,7 +59,8 @@ body {
     justify-content: center;  
     align-items: center;      
     background-color: #ffffff; 
-    
+        aspect-ratio: 3 / 4; /* ✅ ADD THIS LINE */
+
 }
 
 /* Images maintain their natural proportions */

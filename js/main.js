@@ -1040,10 +1040,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         originalItems.forEach(item => {
             const clone = item.cloneNode(true);
-            const img = clone.querySelector("img");
 
+            // ✅ FIX: ensure images load properly
+            const img = clone.querySelector("img");
             if (img) {
                 img.classList.remove("loaded");
+
                 if (img.complete) {
                     img.classList.add("loaded");
                 } else {
@@ -1071,42 +1073,56 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /* -----------------------------
-       RESTORE SCROLL POSITION
+       RESTORE SCROLL POSITION (STABLE)
     ----------------------------- */
 
     const savedScroll = sessionStorage.getItem("scrollPos");
-    const savedCount = sessionStorage.getItem("itemCount");
+    const savedCount = parseInt(sessionStorage.getItem("itemCount"));
 
     if (savedScroll) {
-        // Add items if needed
         const currentCount = container.children.length;
+
+        // rebuild same number of items
         if (savedCount > currentCount) {
-            const setsNeeded = Math.ceil((savedCount - currentCount) / originalItems.length);
+            const setsNeeded = Math.ceil(
+                (savedCount - currentCount) / originalItems.length
+            );
+
             for (let i = 0; i < setsNeeded; i++) {
                 appendMore();
             }
         }
 
-        // Single scroll attempt with small delay
+        // ✅ KEY FIX: delay until layout is stable
         setTimeout(() => {
             window.scrollTo(0, parseInt(savedScroll));
-        }, 200);
+        }, 120);
 
         sessionStorage.removeItem("scrollPos");
         sessionStorage.removeItem("itemCount");
     }
 
     /* -----------------------------
-       INFINITE SCROLL
+       INFINITE SCROLL (SMOOTH)
     ----------------------------- */
 
-    window.addEventListener("scroll", () => {
-        const scrollBottom = window.scrollY + window.innerHeight;
-        const pageHeight = document.documentElement.scrollHeight;
+    let ticking = false;
 
-        if (scrollBottom > pageHeight - 1500) {
-            appendMore();
-        }
+    window.addEventListener("scroll", () => {
+        if (ticking) return;
+
+        ticking = true;
+
+        requestAnimationFrame(() => {
+            const scrollBottom = window.scrollY + window.innerHeight;
+            const pageHeight = document.documentElement.scrollHeight;
+
+            if (scrollBottom > pageHeight - 1200) {
+                appendMore();
+            }
+
+            ticking = false;
+        });
     });
 
     /* -----------------------------
