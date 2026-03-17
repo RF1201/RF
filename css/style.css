@@ -459,7 +459,7 @@ object-fit:contain;
     text-align: center;
     font-family: 'Gabarito', sans-serif;
     font-weight: 700;
-    font-size: 10pt;
+    font-size: 9pt;
 }
 
 .legal-links a {
@@ -677,4 +677,150 @@ object-fit:contain;
         transform: translateZ(0);
         -webkit-transform: translateZ(0);
     } */
+}
+
+/* Hide line breaks on mobile */
+@media (max-width: 768px) {
+    .art-info h2 br {
+        display: none; /* This hides the <br> tags */
+    }
+    
+    .art-info h2 {
+        white-space: normal; /* Allow text to wrap naturally */
+    }
+}
+
+
+/* Mobile description formatting */
+@media (max-width: 768px) {
+    
+    /* For artworks where "on..." should be in second line - hide the <br> */
+    .art-info[data-art="gottliches-timing"] p:first-of-type br,
+    .art-info[data-art="capricorn"] p:first-of-type br,
+    .art-info[data-art="rot-ist-die-liebe"] p:first-of-type br,
+    .art-info[data-art="leafy-greens"] p:first-of-type br,
+    .art-info[data-art="may-you-be"] p:first-of-type br,
+    .art-info[data-art="cappuccino"] p:first-of-type br,
+    .art-info[data-art="fiebertraum"] p:first-of-type br,
+    .art-info[data-art="when-thoughts"] p:first-of-type br,
+    .art-info[data-art="quit-or-succeed"] p:first-of-type br,
+    .art-info[data-art="nancy-botwin"] p:first-of-type br,
+    .art-info[data-art="flight-neon"] p:first-of-type br {
+        display: none;
+    }
+    
+    /* For artworks where material and surface should be together but can wrap naturally */
+    .art-info[data-art="madre-ayahuasca"] p:first-of-type,
+    .art-info[data-art="making-waves"] p:first-of-type,
+    .art-info[data-art="mutterwunde"] p:first-of-type,
+    .art-info[data-art="weise-instanz"] p:first-of-type,
+    .art-info[data-art="lesson-softening"] p:first-of-type,
+    .art-info[data-art="still-looking"] p:first-of-type {
+        white-space: normal; /* Allow wrapping */
+    }
+    
+    /* Remove any <br> in these paragraphs */
+    .art-info[data-art="madre-ayahuasca"] p:first-of-type br,
+    .art-info[data-art="making-waves"] p:first-of-type br,
+    .art-info[data-art="mutterwunde"] p:first-of-type br,
+    .art-info[data-art="weise-instanz"] p:first-of-type br,
+    .art-info[data-art="lesson-softening"] p:first-of-type br,
+    .art-info[data-art="still-looking"] p:first-of-type br {
+        display: none;
+    }
+    
+    /* Manic panic special case */
+    .art-info[data-art="manic-panic"] p:first-of-type br {
+        display: none;
+    }
+    
+    /* Ensure all paragraphs have proper line height */
+    .art-info p {
+        line-height: 1.5;
+        margin-bottom: 8px;
+    }
+}
+
+/* Medium screens (769px to 1100px) - Move text below image */
+@media (min-width: 769px) and (max-width: 1100px) {
+    
+    /* Container spacing */
+    .scroll-container {
+        gap: 70px;
+        padding: 40px 30px;
+    }
+    
+    /* Each artwork block - stack vertically */
+    .scroll-item {
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 0;
+    }
+    
+    /* Image - appears first */
+    .scroll-item img {
+        height: auto;
+        width: 100%;
+        object-fit: contain;
+        order: 1;
+    }
+    
+    /* Title + description - appears below image */
+    .art-info {
+        position: static;
+        width: 100%;
+        margin-top: 30px;  /* Space after image */
+        margin-bottom: 0;
+        order: 2;
+    }
+    
+    /* Title */
+    .art-info h2 {
+        font-size: 21px;
+        margin-bottom: 14px;
+    }
+    
+    /* Description */
+    .art-info p {
+        line-height: 1.6;
+        margin-bottom: 12px;
+    }
+}
+
+/* Extra small screens (below 380px) */
+@media (max-width: 380px) {
+    .contact-container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .contact-inquiry {
+        width: 100%;
+        max-width: 290px;
+        margin: 0 auto;
+        font-size: 13zpt;
+        line-height: 1.4;
+        text-align: center;
+    }
+    
+    .contact-inquiry span {
+        display: block;
+        width: 100%;
+        white-space: nowrap;
+    }
+    
+    .line1 {
+        margin-bottom: 3px;
+    }
+    
+    .line2 {
+        margin-bottom: 3px;
+        font-size: 13pt; /* Slightly smaller for the long line */
+        letter-spacing: -0.3px;
+    }
+    
+    .line3 {
+        margin-top: 0;
+    }
 }

@@ -1025,7 +1025,136 @@
 // });
 
 
-document.addEventListener("DOMContentLoaded", function () {
+// document.addEventListener("DOMContentLoaded", function () {
+//     const container = document.querySelector(".scroll-container");
+//     if (!container) return;
+
+//     const contactLink = document.querySelector(".top-right a");
+//     const originalItems = Array.from(container.children);
+
+//     let isAdding = false;
+
+//     function appendMore() {
+//         if (isAdding) return;
+//         isAdding = true;
+
+//         originalItems.forEach(item => {
+//             const clone = item.cloneNode(true);
+
+//             // ✅ FIX: ensure images load properly
+//             const img = clone.querySelector("img");
+//             if (img) {
+//                 img.classList.remove("loaded");
+
+//                 if (img.complete) {
+//                     img.classList.add("loaded");
+//                 } else {
+//                     img.addEventListener("load", () => {
+//                         img.classList.add("loaded");
+//                     });
+//                 }
+//             }
+
+//             container.appendChild(clone);
+//         });
+
+//         isAdding = false;
+//     }
+
+//     /* -----------------------------
+//        SAVE SCROLL POSITION
+//     ----------------------------- */
+
+//     if (contactLink) {
+//         contactLink.addEventListener("click", () => {
+//             sessionStorage.setItem("scrollPos", window.scrollY);
+//             sessionStorage.setItem("itemCount", container.children.length);
+//         });
+//     }
+
+//     /* -----------------------------
+//        RESTORE SCROLL POSITION (STABLE)
+//     ----------------------------- */
+
+//     const savedScroll = sessionStorage.getItem("scrollPos");
+//     const savedCount = parseInt(sessionStorage.getItem("itemCount"));
+
+//     if (savedScroll) {
+//         const currentCount = container.children.length;
+
+//         // rebuild same number of items
+//         if (savedCount > currentCount) {
+//             const setsNeeded = Math.ceil(
+//                 (savedCount - currentCount) / originalItems.length
+//             );
+
+//             for (let i = 0; i < setsNeeded; i++) {
+//                 appendMore();
+//             }
+//         }
+
+//         // ✅ KEY FIX: delay until layout is stable
+//         setTimeout(() => {
+//             window.scrollTo(0, parseInt(savedScroll));
+//         }, 120);
+
+//         sessionStorage.removeItem("scrollPos");
+//         sessionStorage.removeItem("itemCount");
+//     }
+
+//     /* -----------------------------
+//        INFINITE SCROLL (SMOOTH)
+//     ----------------------------- */
+
+//     let ticking = false;
+
+//     window.addEventListener("scroll", () => {
+//         if (ticking) return;
+
+//         ticking = true;
+
+//         requestAnimationFrame(() => {
+//             const scrollBottom = window.scrollY + window.innerHeight;
+//             const pageHeight = document.documentElement.scrollHeight;
+
+//             if (scrollBottom > pageHeight - 1200) {
+//                 appendMore();
+//             }
+
+//             ticking = false;
+//         });
+//     });
+
+//     /* -----------------------------
+//        IMAGE FADE-IN
+//     ----------------------------- */
+
+//     document.querySelectorAll(".scroll-item img").forEach(img => {
+//         if (img.complete) {
+//             img.classList.add("loaded");
+//         } else {
+//             img.addEventListener("load", () => {
+//                 img.classList.add("loaded");
+//             });
+//         }
+//     });
+// });
+
+
+
+
+/* -----------------------------
+   FORCE MANUAL SCROLL RESTORE
+----------------------------- */
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = "manual";
+}
+
+/* -----------------------------
+   MAIN (WORKS WITH BACK BUTTON)
+----------------------------- */
+window.addEventListener("pageshow", function () {
+
     const container = document.querySelector(".scroll-container");
     if (!container) return;
 
@@ -1034,6 +1163,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let isAdding = false;
 
+    /* -----------------------------
+       APPEND MORE ITEMS (INFINITE)
+    ----------------------------- */
     function appendMore() {
         if (isAdding) return;
         isAdding = true;
@@ -1041,7 +1173,6 @@ document.addEventListener("DOMContentLoaded", function () {
         originalItems.forEach(item => {
             const clone = item.cloneNode(true);
 
-            // ✅ FIX: ensure images load properly
             const img = clone.querySelector("img");
             if (img) {
                 img.classList.remove("loaded");
@@ -1062,27 +1193,42 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /* -----------------------------
-       SAVE SCROLL POSITION
+       SAVE CURRENT ARTWORK INDEX
     ----------------------------- */
-
     if (contactLink) {
         contactLink.addEventListener("click", () => {
-            sessionStorage.setItem("scrollPos", window.scrollY);
+
+            const items = document.querySelectorAll(".scroll-item");
+
+            let closestIndex = 0;
+            let closestOffset = Infinity;
+
+            items.forEach((item, index) => {
+                const rect = item.getBoundingClientRect();
+                const offset = Math.abs(rect.top);
+
+                if (offset < closestOffset) {
+                    closestOffset = offset;
+                    closestIndex = index;
+                }
+            });
+
+            sessionStorage.setItem("artIndex", closestIndex);
             sessionStorage.setItem("itemCount", container.children.length);
         });
     }
 
     /* -----------------------------
-       RESTORE SCROLL POSITION (STABLE)
+       RESTORE SAME ARTWORK (MOBILE SAFE)
     ----------------------------- */
-
-    const savedScroll = sessionStorage.getItem("scrollPos");
+    const savedIndex = parseInt(sessionStorage.getItem("artIndex"));
     const savedCount = parseInt(sessionStorage.getItem("itemCount"));
 
-    if (savedScroll) {
+    if (!isNaN(savedIndex)) {
+
         const currentCount = container.children.length;
 
-        // rebuild same number of items
+        /* rebuild infinite scroll BEFORE restoring */
         if (savedCount > currentCount) {
             const setsNeeded = Math.ceil(
                 (savedCount - currentCount) / originalItems.length
@@ -1093,19 +1239,36 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        // ✅ KEY FIX: delay until layout is stable
-        setTimeout(() => {
-            window.scrollTo(0, parseInt(savedScroll));
-        }, 120);
+        const items = document.querySelectorAll(".scroll-item");
+        const target = items[savedIndex];
 
-        sessionStorage.removeItem("scrollPos");
+        if (target) {
+
+            /* 🔥 CRITICAL: wait for layout + images */
+            setTimeout(() => {
+
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+
+                        target.scrollIntoView({
+                            behavior: "auto",
+                            block: "center"
+                        });
+
+                    });
+                });
+
+            }, 100);
+        }
+
+        /* cleanup */
+        sessionStorage.removeItem("artIndex");
         sessionStorage.removeItem("itemCount");
     }
 
     /* -----------------------------
-       INFINITE SCROLL (SMOOTH)
+       INFINITE SCROLL
     ----------------------------- */
-
     let ticking = false;
 
     window.addEventListener("scroll", () => {
@@ -1114,6 +1277,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ticking = true;
 
         requestAnimationFrame(() => {
+
             const scrollBottom = window.scrollY + window.innerHeight;
             const pageHeight = document.documentElement.scrollHeight;
 
@@ -1128,8 +1292,8 @@ document.addEventListener("DOMContentLoaded", function () {
     /* -----------------------------
        IMAGE FADE-IN
     ----------------------------- */
-
     document.querySelectorAll(".scroll-item img").forEach(img => {
+
         if (img.complete) {
             img.classList.add("loaded");
         } else {
@@ -1137,5 +1301,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 img.classList.add("loaded");
             });
         }
+
     });
+
 });

@@ -140,7 +140,7 @@ body: "EMAIL=" + encodeURIComponent(email) +
 })
 .finally(() => {
 document.getElementById("newsletter-text").textContent = "Thanks for joining!";
-btn.textContent = "Send";
+btn.textContent = "sent";
 btn.disabled = false;
 document.getElementById("newsletter-form").reset();
 });
