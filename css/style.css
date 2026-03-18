@@ -684,10 +684,22 @@ object-fit:contain;
     .art-info h2 br {
         display: none; /* This hides the <br> tags */
     }
+    .art-info[data-art="capricorn"] h2 br {
+        display: inline; /* This OVERRIDES the previous rule */
+    }
     
     .art-info h2 {
         white-space: normal; /* Allow text to wrap naturally */
     }
+}
+
+/* Desktop - show desktop version, hide mobile version */
+.art-info[data-art="fiebertraum"] .desktop-text {
+    display: block;
+}
+
+.art-info[data-art="fiebertraum"] .mobile-text {
+    display: none;
 }
 
 
@@ -696,18 +708,20 @@ object-fit:contain;
     
     /* For artworks where "on..." should be in second line - hide the <br> */
     .art-info[data-art="gottliches-timing"] p:first-of-type br,
-    .art-info[data-art="capricorn"] p:first-of-type br,
+    /* .art-info[data-art="capricorn"] p:first-of-type br, */
     .art-info[data-art="rot-ist-die-liebe"] p:first-of-type br,
     .art-info[data-art="leafy-greens"] p:first-of-type br,
     .art-info[data-art="may-you-be"] p:first-of-type br,
     .art-info[data-art="cappuccino"] p:first-of-type br,
-    .art-info[data-art="fiebertraum"] p:first-of-type br,
+    /* .art-info[data-art="fiebertraum"] p:first-of-type br, */
     .art-info[data-art="when-thoughts"] p:first-of-type br,
     .art-info[data-art="quit-or-succeed"] p:first-of-type br,
     .art-info[data-art="nancy-botwin"] p:first-of-type br,
     .art-info[data-art="flight-neon"] p:first-of-type br {
         display: none;
     }
+
+    
     
     /* For artworks where material and surface should be together but can wrap naturally */
     .art-info[data-art="madre-ayahuasca"] p:first-of-type,
@@ -733,7 +747,13 @@ object-fit:contain;
     .art-info[data-art="manic-panic"] p:first-of-type br {
         display: none;
     }
+    .art-info[data-art="fiebertraum"] .desktop-text {
+        display: none;
+    }
     
+    .art-info[data-art="fiebertraum"] .mobile-text {
+        display: block;
+    }
     /* Ensure all paragraphs have proper line height */
     .art-info p {
         line-height: 1.5;
@@ -799,7 +819,7 @@ object-fit:contain;
         width: 100%;
         max-width: 290px;
         margin: 0 auto;
-        font-size: 13zpt;
+        font-size: 12pt;
         line-height: 1.4;
         text-align: center;
     }
@@ -811,12 +831,12 @@ object-fit:contain;
     }
     
     .line1 {
-        margin-bottom: 3px;
+        margin-bottom: 10px;
     }
     
     .line2 {
-        margin-bottom: 3px;
-        font-size: 13pt; /* Slightly smaller for the long line */
+        margin-bottom: 10px;
+        font-size: 12pt; /* Slightly smaller for the long line */
         letter-spacing: -0.3px;
     }
     
@@ -824,3 +844,5 @@ object-fit:contain;
         margin-top: 0;
     }
 }
+
+
