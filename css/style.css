@@ -761,6 +761,16 @@ object-fit:contain;
     }
 }
 
+@media (min-width: 769px) {
+    .art-info[data-art="making-waves"] p:first-of-type {
+        white-space: nowrap !important;
+    }
+    
+    .art-info[data-art="making-waves"] p:first-of-type br {
+        display: none;
+    }
+}
+
 /* Medium screens (769px to 1100px) - Move text below image */
 @media (min-width: 769px) and (max-width: 1100px) {
     
@@ -849,5 +859,4 @@ object-fit:contain;
     
 }
 }
-
 
