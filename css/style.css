@@ -846,7 +846,7 @@ object-fit:contain;
     
     .line2 {
         margin-bottom: 10px;
-        font-size: 13pt; /* Slightly smaller for the long line */
+        font-size: 13pt;
         letter-spacing: -0.3px;
         margin-left:-10px;
     }
