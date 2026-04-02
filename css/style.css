@@ -296,7 +296,8 @@ object-fit:contain;
 .contact-bio {
     font-family: 'Gabarito', sans-serif;
     font-weight: 700;
-    font-size: 13pt;
+    /* font-size: 13pt; */
+    font-size: 12pt;
     line-height: 1.8;
     margin-bottom: 1px;
 }
@@ -305,7 +306,8 @@ object-fit:contain;
 .contact-initials {
     font-family: 'Playfair Display', serif;
     font-weight: 800;
-    font-size: 20pt;
+    /* font-size: 20pt; */
+    font-size:22px;
     margin: 30px 0 50px;
 }
 
@@ -360,7 +362,8 @@ object-fit:contain;
 .contact-inquiry {
     font-family: 'Gabarito', sans-serif;
     font-weight: 700;
-    font-size: 13pt;
+    /* font-size: 13pt; */
+     font-size: 12pt;
     line-height: 1.6;
     margin-bottom: 15px;
 }
@@ -411,14 +414,16 @@ object-fit:contain;
 .contact-signature{
     font-family: 'Gabarito', sans-serif;
     font-weight:700;
-    font-size:13pt;
+    /* font-size:13pt; */
+     font-size: 12pt;
     margin:20px 0 40px;
 }
 
 .contact-details a {
     font-family: 'Gabarito', sans-serif;
     font-weight: 700;
-    font-size: 13pt;
+    /* font-size: 13pt; */
+     font-size: 12pt;
     text-decoration: none;
     color: #000;
 }
@@ -495,7 +500,8 @@ object-fit:contain;
 
 .newsletter-text {
     font-weight: 700;
-    font-size: 18px;
+    /* font-size: 18px; */
+     font-size: 12pt;
     white-space: nowrap;  /* Prevents text from wrapping */
 }
 
@@ -509,7 +515,8 @@ object-fit:contain;
     border: none;
     background: transparent;
     padding: 8px 5px;
-    font-size: 18px;
+    /* font-size: 18px; */
+     font-size: 12pt;
     outline: none;
     width: 200px;  /* Slightly wider */
     color: #000;
@@ -524,7 +531,8 @@ object-fit:contain;
     border: none;
     background: none;
     font-weight: 700;
-    font-size: 18px;
+    /* font-size: 18px; */
+     font-size: 12pt;
     cursor: pointer;
     padding: 8px 0;
     font-family: 'Gabarito', sans-serif;
@@ -823,13 +831,14 @@ object-fit:contain;
     .contact-container {
         padding-left: 10px;
         padding-right: 10px;
+        font-size: 11pt;
     }
     
     .contact-inquiry {
         width: 100%;
         max-width: 290px;
         margin: 0 auto;
-        font-size: 13pt;
+        /* font-size: 13pt; */
         line-height: 1.4;
         text-align: center;
     }
@@ -846,7 +855,7 @@ object-fit:contain;
     
     .line2 {
         margin-bottom: 10px;
-        font-size: 13pt;
+        /* font-size: 13pt; */
         letter-spacing: -0.3px;
         margin-left:-10px;
     }
