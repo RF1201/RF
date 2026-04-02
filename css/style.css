@@ -318,7 +318,9 @@ object-fit:contain;
 
 .contact-image img {
     width: 100%;
-    max-width: 260px;
+    /* max-width: 260px; */
+    max-width: 290px;
+
     height: auto;
     display: block;
 }
