@@ -858,8 +858,9 @@ object-fit:contain;
     .line2 {
         margin-bottom: 10px;
         /* font-size: 13pt; */
-        letter-spacing: -0.3px;
-        /* margin-left:-10px; */
+        /* letter-spacing: -0.3px; */
+        margin-left:-10px;
+        text-align: center;
     }
     
     .line3 {
