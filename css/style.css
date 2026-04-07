@@ -859,7 +859,7 @@ object-fit:contain;
         margin-bottom: 10px;
         /* font-size: 13pt; */
         letter-spacing: -0.3px;
-        margin-left:-10px;
+        /* margin-left:-10px; */
     }
     
     .line3 {
