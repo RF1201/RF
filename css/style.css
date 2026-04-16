@@ -829,7 +829,7 @@ object-fit:contain;
 }
 
 /* Extra small screens (below 380px) */
-@media (max-width: 380px) {
+@media (max-width: 450px) {
     .contact-container {
         padding-left: 10px;
         padding-right: 10px;
@@ -867,6 +867,16 @@ object-fit:contain;
         margin-top: 0;
     }
 
+    .german-line1 {
+        margin-bottom: 5px;
+    }
+    
+    .german-line2 {
+        margin-bottom: 5px;
+         text-align: center;
+         margin-left:-35px;
+    }
+
     .contact-details {
         margin-bottom: 10px;
     
@@ -879,3 +889,85 @@ object-fit:contain;
 }
 
 
+
+
+
+
+/* Inquiry Text - German & English */
+.contact-inquiry {
+    font-family: 'Gabarito', sans-serif;
+    font-weight: 700;
+    font-size: 12pt;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* German Inquiry - spacing between German and English */
+.contact-inquiry-german {
+    margin-bottom: 25px;
+}
+
+/* Desktop styles */
+.contact-inquiry span {
+    display: inline;
+}
+
+.desktop-break {
+    display: block;
+}
+
+.german-break {
+    display: block;
+}
+
+/* Mobile styles - exactly 3 lines for both */
+@media (max-width: 600px) {
+    .contact-inquiry {
+        text-align: center;
+        line-height: 1.7;
+    }
+    
+    .contact-inquiry span {
+        display: block;
+    }
+    
+    /* German text - 3 lines on mobile */
+    .german-line1 {
+        display: block;
+        margin-bottom: 4px;
+    }
+    
+    .german-line2 {
+        display: block;
+        margin-bottom: 4px;
+    }
+    
+    .german-line3 {
+        display: block;
+    }
+    
+    /* Hide the <br> on mobile */
+    .german-break {
+        display: none;
+    }
+    
+    /* English text - 3 lines on mobile */
+    .line1 {
+        display: block;
+        margin-bottom: 4px;
+    }
+    
+    .line2 {
+        display: block;
+        margin-bottom: 4px;
+    }
+    
+    .line3 {
+        display: block;
+    }
+    
+    /* Hide the <br> on mobile */
+    .desktop-break {
+        display: none;
+    }
+}
