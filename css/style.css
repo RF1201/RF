@@ -877,15 +877,21 @@ object-fit:contain;
          margin-left:-35px;
     }
 
-    .contact-details {
+    /* .contact-details {
         margin-bottom: 10px;
     
-}
+} */
 
-.contact-signature{
-    margin-top: 40px;
-}
-
+.contact-initials {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    
+    /* Signature - equal spacing above and below */
+    .contact-signature {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
 }
 
 
@@ -969,5 +975,39 @@ object-fit:contain;
     /* Hide the <br> on mobile */
     .desktop-break {
         display: none;
+        
+    }
+
+    .contact-initials {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    
+    /* Signature - equal spacing above and below */
+    .contact-signature {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}
+
+
+
+/* Mobile spacing fixes for RF and Signature */
+@media (max-width: 768px) {
+    
+    /* RF initials - equal spacing above and below */
+    .contact-initials {
+        margin-top:40px;
+        margin-bottom: 40px;
+    }
+    
+    /* Signature - equal spacing above and below */
+    .contact-signature {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+     .contact-details {
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 }
