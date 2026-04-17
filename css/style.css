@@ -988,15 +988,14 @@ object-fit:contain;
     }
 
     /* Bio */
-.contact-bio {
+/* .contact-bio {
     
     margin-bottom: 20px;
-}
+} */
 
-    .contact-initials {
-        margin-top: 30px;
-        margin-bottom: 50px;
-    }
+    /* .contact-initials {
+        margin: 30px 0 50px;
+    } */
 
     .contact-signature {
         margin: 20px 0 40px;
@@ -1009,23 +1008,17 @@ object-fit:contain;
     
 }
 
-
-/* Mobile spacing for RF initials - matching desktop feel */
+/* Mobile spacing - clean balanced layout */
 @media (max-width: 768px) {
-    /* Reduce space between bio and initials */
     .contact-bio {
-        margin-bottom: 15px;
+        margin-bottom: 0 !important;
     }
     
-    /* RF initials spacing - tighter like desktop */
+    .contact-inquiry {
+        margin-top: 0 !important;
+    }
+    
     .contact-initials {
-        margin-top: 30px;
-        margin-bottom: 50px;
-    }
-    
-    /* Keep signature spacing as is */
-    .contact-signature {
-        margin-top: 20px;
-        margin-bottom: 40px;
+        margin: 50px 0 50px !important;
     }
 }
