@@ -311,7 +311,6 @@ object-fit:contain;
     margin: 30px 0 50px;
 }
 
-
 /* Image */
 .contact-image {
     margin-bottom: 30px;
@@ -883,24 +882,9 @@ object-fit:contain;
     
 }
 
-
-/* .contact-initials {
-        margin: 30px 0 50px;
-    }
-
-    .contact-signature {
-        margin: 20px 0 40px;
-    }
-
-   
-.contact-bio {
-
-    margin-bottom: 20px;
-} */
-
-/* .contact-signature{
+.contact-signature{
     margin-top: 40px;
-} */
+}
 
 }
 
@@ -986,24 +970,8 @@ object-fit:contain;
     .desktop-break {
         display: none;
     }
-
-    /* Bio */
-.contact-bio {
-    
-    margin-bottom: 20px;
 }
 
-    .contact-initials {
-        margin: 30px 0 50px;
-    }
 
-    .contact-signature {
-        margin: 20px 0 40px;
-    }
 
-    /* .contact-bio {
 
-    margin-bottom: 20px;
-} */
-    
-}
