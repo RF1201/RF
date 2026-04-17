@@ -1019,6 +1019,7 @@ object-fit:contain;
     }
     
     .contact-initials {
-        margin: 50px 0 50px !important;
+          margin: 25px 0 35px !important;
+         
     }
 }
