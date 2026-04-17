@@ -994,7 +994,8 @@ object-fit:contain;
 }
 
     .contact-initials {
-        margin: 30px 0 50px;
+        margin-top: 30px;
+        margin-bottom: 50px;
     }
 
     .contact-signature {
@@ -1006,4 +1007,25 @@ object-fit:contain;
     margin-bottom: 20px;
 } */
     
+}
+
+
+/* Mobile spacing for RF initials - matching desktop feel */
+@media (max-width: 768px) {
+    /* Reduce space between bio and initials */
+    .contact-bio {
+        margin-bottom: 15px;
+    }
+    
+    /* RF initials spacing - tighter like desktop */
+    .contact-initials {
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
+    
+    /* Keep signature spacing as is */
+    .contact-signature {
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
 }
