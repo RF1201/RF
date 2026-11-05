@@ -1,37 +1,11 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- =========================================
-     BROWSER / GOOGLE TITLE
-     ========================================= -->
 <title>Regina Fröhlich | Visual Artist</title>
+<meta name="description" content="original abstract paintings and mixed-media works">
 
-
-
-<!-- =========================================
-     SEO DESCRIPTION
-     ========================================= -->
-<meta name="description"
-      content="original abstract paintings and mixed-media works">
-
-      <!-- FAVICON - White Canvas -->
-<!-- FAVICON -->
-<!--<link rel="icon" type="image/png" href="assets/images/favicon/favicon.png">
-<link rel="apple-touch-icon" href="assets/images/favicon/favicon.png">-->
-<!-- FAVICON - White Canvas -->
-<!--<link rel="icon" type="image/png" sizes="512x512" href="assets/images/favicon/favicon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/favicon.png">
-<link rel="icon" type="image/png" sizes="180x180" href="assets/images/favicon/favicon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/favicon.png">
-<link rel="mask-icon" href="assets/images/favicon/favicon.png" color="#ffffff">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%23ffffff'/></svg>">-->
-
-<!-- FAVICON -->
 <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
@@ -45,187 +19,424 @@
 <link rel="mask-icon" href="assets/images/favicon/favicon.png" color="#ffffff">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%23ffffff'/></svg>">
 
-<!-- =========================================
-     CANONICAL URL
-     ========================================= -->
-<link rel="canonical"
-      href="https://reginafroehlich.com/">
 
+<link rel="stylesheet" href="css/style.css">
 
 <!-- =========================================
-     SOCIAL / OPEN GRAPH
-     ========================================= -->
-<meta property="og:title"
-      content="Regina Fröhlich — Visual Artist">
-
-<meta property="og:description"
-      content="original abstract paintings and mixed-media works.">
-
-<meta property="og:url"
-      content="https://reginafroehlich.com/">
-
-<meta property="og:type"
-      content="website">
-
-
-<!-- =========================================
-     TWITTER / X
-     ========================================= -->
-<meta name="twitter:card"
-      content="summary">
-
-<meta name="twitter:title"
-      content="Regina Fröhlich — Visual Artist">
-
-<meta name="twitter:description"
-      content="Original abstract paintings and mixed-media works by Regina Fröhlich.">
-
-
-
-
-<!-- =========================================
-     GOOGLE FONTS
-     ========================================= -->
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"
-  rel="stylesheet">
-
-
-<!-- =========================================
-     STYLES
+     SCROLL RESTORE: hide page until position is restored (no flicker)
      ========================================= -->
 <style>
-
-  :root {
-    --ink: #000000;
-    --muted: #5e5e5e;
-    --bg: #ffffff;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    background: var(--bg);
-    color: var(--ink);
-    height: 100%;
-  }
-
-  body {
-    display: flex;
-    align-items: center;
-    min-height: 100vh;
-    font-family: 'Gabarito', sans-serif;
-  }
-
-  main {
-    max-width: 640px;
-    padding: 8vw 7vw;
-  }
-
-  .name {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-style: normal;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    font-size: clamp(1.148rem, 2.623vw, 1.476rem);
-    margin: 0;
-    line-height: 1.15;
-  }
-
-  .tagline {
-    display: block;
-    font-family: 'Playfair Display', serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: clamp(1.05rem, 2.4vw, 1.35rem);
-    margin: 0.35em 0 0 0;
-    line-height: 1.3;
-  }
-
-  .status {
-    margin-top: clamp(3rem, 8vw, 5rem);
-  }
-
-  .status p {
-    margin: 0;
-    font-family: 'Gabarito', sans-serif;
-    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
-    line-height: 1.6;
-  }
-
-  .status .de {
-    font-weight: 600;
-    color: var(--ink);
-  }
-
-  .status .en {
-    font-weight: 400;
-    color: var(--muted);
-    margin-top: 0.35em;
-  }
-
-  .contact {
-    margin-top: clamp(2rem, 5vw, 3rem);
-  }
-
-  .contact a {
-    font-family: 'Gabarito', sans-serif;
-    font-weight: 700;
-    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
-    color: var(--ink);
-    text-decoration: none;
-  }
-
-  .contact a:hover {
-    text-decoration: underline;
-  }
-
+    html.restoring body { visibility: hidden; }
+    html.restoring .scroll-item img { transition: none !important; opacity: 1 !important; }
 </style>
+<script>
+    try {
+        if (Number(sessionStorage.getItem("homepage_saved_y")) > 0) {
+            document.documentElement.classList.add("restoring");
+        }
+    } catch (e) {}
+</script>
+
+<!-- Google Fonts (since they are free) -->
+<!-- <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Gabarito:wght@700&display=swap" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Gabarito:wght@300;400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> 
+<!-- <script>
+    history.scrollRestoration = "manual";
+</script> -->
+<script>
+    if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+    }
+</script>
 </head>
-
-
 <body>
 
-<main>
+<!-- Top Right Navigation -->
+<div class="top-right">
+    <a href="contact.html">contact</a>
+</div>
 
-  <p class="name">Regina Fröhlich</p>
+<!-- Scroll Container -->
+<div class="scroll-container">
 
-  <p class="tagline">
-    Artist · Abstract Painting
-  </p>
-
-  <div class="status">
-
-    <p class="de">
-      Neue Arbeiten in Kürze.
-    </p>
-
-    <p class="en">
-      New work coming soon.
-    </p>
-
-  </div>
-
-  <p class="contact">
-    <a href="mailto:info@reginafroehlich.com">
-      info@reginafroehlich.com
+    <!--<a class="scroll-item">
+        <div class="art-info">
+            <h2>das Auge der</h2>
+            <p>fineliner, marker, colored pencil<br>on 220 g/m² terra vanilla paper,</p>
+            <p>21 cm × 29,7 cm</p>
+        </div>
+        <img src="assets/images/homepage/1-das-Auge-der-upscaled.jpeg" alt="Artwork 1" loading="eager" fetchpriority="high">
     </a>
-  </p>
 
-</main>
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2>Flora’s Rakete</h2>
+            <p>fineliner, marker, colored pencil<br>on 220 g/m² terra vanilla paper,</p>
+            <p>21 cm × 29,7 cm</p>
+        </div>
+        <img src="assets/images/homepage/2-Flora-Rakete-upscaled.jpeg" alt="Artwork 2" loading="lazy">
+    </a>
+
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2>bliss</h2>
+            <p>fineliner, marker, colored pencil<br>on 190 g/m² white paper,</p>
+            <p>21 cm × 29,7 cm</p>
+        </div>
+        <img src="assets/images/homepage/3-bliss-upscaled.jpeg" alt="Artwork 3" loading="lazy">
+    </a>
+
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2>Schmetterlingsgerüst</h2>
+            <p>fineliner, marker, colored pencil<br>on 220 g/m² terra vanilla paper,</p>
+            <p>21 cm × 29,7 cm</p>
+        </div>
+        <img src="assets/images/homepage/4-Schmetterlingsgerust-upscaled.jpeg" alt="Artwork 4" loading="lazy">
+    </a>
+
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2>Federkreisel</h2>
+            <p>fineliner, marker, colored pencil<br>on 220 g/m² terra vanilla paper,</p>
+            <p>21 cm × 29,7 cm</p>
+        </div>
+        <img src="assets/images/homepage/5-Federkreisel-upscaled.jpeg" alt="Artwork 5" loading="lazy">    
+    </a>-->
+
+    <!-- Artwork 6: a flight that split in neon feathers -->
+    <!--<a class="scroll-item">
+        <div class="art-info">
+            <h2>a flight <br> that split <br> in neon feathers</h2>
+            <p>fineliner, marker, colored pencil<br>on 190 g/m² white paper,</p>
+            <p>21 cm × 29,7 cm</p>
+        </div>
+        <img src="assets/images/homepage/6-a-flight-that-split-in-neon-feathers-upscaled.jpeg" alt="Artwork 6" loading="lazy">    
+    </a>-->
+
+    <!-- Artwork 7: göttliches Timing trifft Matcha Latte (FIXED) -->
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2 class="title-break">göttliches Timing <br> trifft Matcha Latte</h2>
+            <!--<p>acrylic, acrylic marker, colored pencil on plasterboard</p>-->
+           <p>acrylic, acrylic marker, colored pencil <br class="mobile-material-break">on plasterboard</p>
+            <p>125 x 90 x 1.5 cm</p>
+        </div>
+        <!-- <img src="assets/images/homepage/optimized/1-gottliches-Timing-trifft-Matcha-Latte-1200.webp"
+         srcset="assets/images/homepage/optimized/1-gottliches-Timing-trifft-Matcha-Latte-800.webp 800w,
+                 assets/images/homepage/optimized/1-gottliches-Timing-trifft-Matcha-Latte-1200.webp 1200w,
+                 assets/images/homepage/optimized/1-gottliches-Timing-trifft-Matcha-Latte-1600.webp 1600w,
+                 assets/images/homepage/optimized/1-gottliches-Timing-trifft-Matcha-Latte-2000.webp 2000w"
+         sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)"
+         width="3000" height="3000"
+         alt="göttliches Timing trifft Matcha Latte" loading="eager" fetchpriority="high" decoding="async"> -->
+           <img src="assets/images/homepage/1-gottliches-Timing-trifft-Matcha-Latte.webp" alt="Artwork 7" loading="eager" fetchpriority="high" decoding="async">   
+    </a>
+
+    <!-- Artwork 8: capricorn sun, libra moon, virgo rising (FIXED) -->
+    <a class="scroll-item">
+        <div class="art-info" data-art="capricorn">
+            <h2>Trinity</h2>
+           <!--<p>acrylic, acrylic marker, colored pencil on plasterboard</p>-->
+           <p>acrylic, acrylic marker, colored pencil <br class="mobile-material-break">on plasterboard</p>
+            <p>125 x 90 x 1.5 cm</p>
+        </div>
+        <!-- <img src="assets/images/homepage/optimized/2-capricorn-sun-libra-moon-virgo-rising-1200.webp"
+         srcset="assets/images/homepage/optimized/2-capricorn-sun-libra-moon-virgo-rising-800.webp 800w,
+                 assets/images/homepage/optimized/2-capricorn-sun-libra-moon-virgo-rising-1200.webp 1200w,
+                 assets/images/homepage/optimized/2-capricorn-sun-libra-moon-virgo-rising-1600.webp 1600w,
+                 assets/images/homepage/optimized/2-capricorn-sun-libra-moon-virgo-rising-2000.webp 2000w"
+         sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)"
+         width="2560" height="2560"
+         alt="capricorn sun, libra moon, virgo rising" loading="lazy" decoding="async"> -->
+         <img src="assets/images/homepage/2-capricorn-sun-libra-moon-virgo-rising.webp" alt="Artwork 8" loading="lazy" decoding="async" sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)" width="2200" height="2200">    
+    </a>
+
+    <!-- Artwork 9: rot ist die Liebe  -->
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2>rot ist die Liebe</h2>
+            <p>acrylic, acrylic marker, pigment liner, fineliner, brush pen, colored pencil <br class="mobile-material-break">on cardboard</p>
+            <p>70 x 100 cm</p>
+        </div>
+        <!-- <img src="assets/images/homepage/optimized/3-rot-ist-die-Liebe-1200.webp"
+         srcset="assets/images/homepage/optimized/3-rot-ist-die-Liebe-800.webp 800w,
+                 assets/images/homepage/optimized/3-rot-ist-die-Liebe-1200.webp 1200w,
+                 assets/images/homepage/optimized/3-rot-ist-die-Liebe-1600.webp 1600w,
+                 assets/images/homepage/optimized/3-rot-ist-die-Liebe-2000.webp 2000w"
+         sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)"
+         width="2400" height="2400"
+         alt="rot ist die Liebe" loading="lazy" decoding="async"> -->
+            <img src="assets/images/homepage/3-rot-ist-die-Liebe.webp" alt="Artwork 9" loading="lazy" decoding="async" sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)" width="2200" height="2200">   
+
+    </a>
+
+    <!--<a class="scroll-item">
+        <div class="art-info">
+            <h2>Animus</h2>
+            <p>fineliner on 190 g/m² white paper</p>
+            <p>21 cm x 29,7 cm</p>
+        </div>
+        <img src="assets/images/homepage/10-Animus-upscaled.jpg" alt="Artwork 10" loading="lazy">    
+    </a>-->
+    <!-- Artwork 11: madre ayahuasca -->
+    <!--<a class="scroll-item">
+        <div class="art-info">
+            <h2>madre ayahuasca</h2>
+            <p>fineliner, marker, pen on cardboard,</p>
+            <p>71 cm x 106 cm</p>
+        </div>
+        <img src="assets/images/homepage/11-madre-ayahuasca-upscaled.jpeg" alt="Artwork 11" loading="lazy">    
+    </a>-->
+
+    <!-- Artwork 12: making waves -->
+    <a class="scroll-item">
+        <div class="art-info" data-art="making-waves">
+            <h2>making waves</h2>
+            <!-- <p>acrylic marker  on black cardboard</p> -->
+              <p>acrylic marker  <br class="mobile-material-break">on black cardboard</p>
+            <p>42  x 59 cm</p>
+        </div>
+        <!-- <img src="assets/images/homepage/optimized/4-making-waves-1200.webp"
+         srcset="assets/images/homepage/optimized/4-making-waves-800.webp 800w,
+                 assets/images/homepage/optimized/4-making-waves-1200.webp 1200w,
+                 assets/images/homepage/optimized/4-making-waves-1600.webp 1600w,
+                 assets/images/homepage/optimized/4-making-waves-2000.webp 2000w"
+         sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)"
+         width="2560" height="2560"
+         alt="making waves" loading="lazy" decoding="async"> -->
+         <img src="assets/images/homepage/4-making-waves.webp" alt="Artwork 12" loading="lazy" decoding="async" sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)" width="2400" height="2400">    
+    </a>
+
+    <!-- Artwork 12: zu mir -->
+    <a class="scroll-item">
+        <div class="art-info" data-art="zu-mir">
+            <h2>zu mir</h2>
+            <!-- <p>acrylic, acrylic marker,  brush  pen on cardboard</p> -->
+             <p>acrylic, acrylic marker,  brush  pen <br class="mobile-material-break">on cardboard</p>
+            <p>70 x 100 cm</p>
+        </div>
+        <!-- <img src="assets/images/homepage/optimized/5-zu-mir-1200.webp"
+         srcset="assets/images/homepage/optimized/5-zu-mir-800.webp 800w,
+                 assets/images/homepage/optimized/5-zu-mir-1200.webp 1200w,
+                 assets/images/homepage/optimized/5-zu-mir-1600.webp 1600w,
+                 assets/images/homepage/optimized/5-zu-mir-2000.webp 2000w"
+         sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)"
+         width="2560" height="2560"
+         alt="zu mir" loading="lazy" decoding="async"> -->
+          <img src="assets/images/homepage/5-zu-mir.webp" alt="Artwork 12" loading="lazy" decoding="async"  sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)"
+         width="2400" height="2400">   
+    </a>
+
+    <!--<a class="scroll-item">
+        <div class="art-info">
+            <h2>I’m that ghost</h2>
+            <p>acrylic paint, fineliner, marker, pen,<br> colored pencil on cardboard,</p>
+            <p>70 cm x 100 cm</p>
+        </div>
+        <img src="assets/images/homepage/13-Im-that-ghost-upscaled.jpeg" alt="Artwork 13" loading="lazy">    
+    </a>
+
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2>I believe in myself enough to be patient</h2>
+            <p>acrylic paint, fineliner, marker, pen, <br> colored pencil on cardboard,</p>
+            <p>70 cm x 100 cm</p>
+        </div>
+        <img src="assets/images/homepage/14-I-believe-in-myself-enough-to-be-patient-upscaled.jpeg" alt="Artwork 14" loading="lazy">    
+    </a>-->
+
+    <!-- Artwork 15: Mutterwunde heilen -->
+    <!--<a class="scroll-item">
+        <div class="art-info" data-art="mutterwunde">
+            <h2>Mutterwunde heilen</h2>
+            <p>acrylic paint, fineliner, marker <br> on cardboard,</p>
+            <p>70 cm x 100 cm</p>
+        </div>
+        <img src="assets/images/homepage/15-Mutterwunde-heilen-upscaled.jpeg" alt="Artwork 15" loading="lazy">    
+    </a>
+
+   
+    <a class="scroll-item">
+        <div class="art-info" data-art="weise-instanz">
+            <h2>weise Instanz</h2>
+            <p>acrylic paint, fineliner, marker <br> on  cardboard,</p>
+            <p>70 cm x 100 cm</p>
+        </div>
+        <img src="assets/images/homepage/16-weise-Instanz-upscaled.jpeg" alt="Artwork 16" loading="lazy">    
+    </a>
+
+    
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2>leafy greens <br> and a love poem</h2>
+            <p>acrylic paint, marker<br>on 410 g/m² heavy cotton fabric,</p>
+            <p>100 cm x 100 cm x 3,8 cm</p>
+        </div>
+        <img src="assets/images/homepage/17-leafy-greens-and-a-love-poem-upscaled.jpeg" alt="Artwork 17" loading="lazy">    
+    </a>-->
+
+    <!-- Artwork 18: may you be protected by all the God there is (FIXED) -->
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2 class="title-break">may you be protected <br> by all the God there is</h2>
+           <!--<p>acrylic, acrylic marker, brush  pen on linen canvas</p>-->
+           <p>acrylic, acrylic marker, brush pen <br class="mobile-material-break">on linen canvas</p>
+
+            <p>100 x 80 x 4.5 cm</p>
+        </div>
+        <!-- <img src="assets/images/homepage/optimized/6-may-you-be-protected-by-all-the-God-there-is-1200.webp"
+         srcset="assets/images/homepage/optimized/6-may-you-be-protected-by-all-the-God-there-is-800.webp 800w,
+                 assets/images/homepage/optimized/6-may-you-be-protected-by-all-the-God-there-is-1200.webp 1200w,
+                 assets/images/homepage/optimized/6-may-you-be-protected-by-all-the-God-there-is-1600.webp 1600w,
+                 assets/images/homepage/optimized/6-may-you-be-protected-by-all-the-God-there-is-2000.webp 2000w"
+         sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)"
+         width="2560" height="2560"
+         alt="may you be protected by all the God there is" loading="lazy" decoding="async"> -->
+          <img src="assets/images/homepage/6-may-you-be-protected-by-all-the-God-there-is.webp" alt="Artwork 18" loading="lazy" decoding="async" sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)"
+         width="2400" height="2400">  
+    </a>
+
+    <!-- Nova -->
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2>Nova</h2>
+            <!--<p>acrylic, acrylic marker, pigment liner on cardboard</p>-->
+            <p>acrylic, acrylic marker, pigment liner <br class="mobile-material-break">on cardboard</p>
+            <p>100 x 62 cm</p>
+        </div>
+        <!-- <img src="assets/images/homepage/optimized/7-Nova-1200.webp"
+         srcset="assets/images/homepage/optimized/7-Nova-800.webp 800w,
+                 assets/images/homepage/optimized/7-Nova-1200.webp 1200w,
+                 assets/images/homepage/optimized/7-Nova-1600.webp 1600w,
+                 assets/images/homepage/optimized/7-Nova-2000.webp 2000w"
+         sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)"
+         width="2560" height="2560"
+         alt="Nova" loading="lazy" decoding="async"> -->
+           <img src="assets/images/homepage/7-Nova.webp" alt="Artwork 18" loading="lazy" decoding="async" sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)"
+         width="2400" height="2400")">    
+    </a>
+    <!-- 8. Sehen klärt wo Gedanken trüben vs. noisy bubblegum -->
+<a class="scroll-item">
+    <div class="art-info">
+        <h2>
+            <span class="desktop-break">Sehen klärt <br> wo Gedanken trüben <br> vs. noisy bubblegum</span>
+            <span class="mobile-break">
+    Sehen klärt wo Gedanken trüben <br class="mobile-title-break">
+    vs. noisy bubblegum
+</span>
+
+        </h2>
+        <!--<p>acrylic, acrylic marker, brush pen on cotton canvas</p>-->
+        <p>acrylic, acrylic marker, brush pen <br class="mobile-material-break">on cotton canvas</p>
+        <p>100 x 100 x 3.8 cm</p>
+    </div>
+    <!-- <img src="assets/images/homepage/optimized/8-Sehen-klart-wo-Gedanken-truben-vs-noisy-bubblegum-1200.webp"
+         srcset="assets/images/homepage/optimized/8-Sehen-klart-wo-Gedanken-truben-vs-noisy-bubblegum-800.webp 800w,
+                 assets/images/homepage/optimized/8-Sehen-klart-wo-Gedanken-truben-vs-noisy-bubblegum-1200.webp 1200w,
+                 assets/images/homepage/optimized/8-Sehen-klart-wo-Gedanken-truben-vs-noisy-bubblegum-1600.webp 1600w,
+                 assets/images/homepage/optimized/8-Sehen-klart-wo-Gedanken-truben-vs-noisy-bubblegum-2000.webp 2000w"
+         sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)"
+         width="2560" height="2560"
+         alt="Sehen klärt wo Gedanken trüben vs. noisy bubblegum" loading="lazy" decoding="async"> -->
+          <img src="assets/images/homepage/8-Sehen-klart-wo-Gedanken-truben-vs-noisy-bubblegum.webp" alt="Artwork 8" loading="lazy" decoding="async"  sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)"
+         width="2400" height="2400">
+</a>
+    <!-- Aiolos' Atem -->
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2>Wind </h2>
+            <!--<p>acrylic, acrylic marker, brush pen on plasterboard</p>-->
+            <p>acrylic, acrylic marker, brush pen <br class="mobile-material-break">on plasterboard</p>
+            <p>48 × 48 × 1.5 cm</p>
+        </div>
+        <img src="assets/images/homepage/optimized/Aiolos-Atem-1200.webp"
+         srcset="assets/images/homepage/optimized/Aiolos-Atem-800.webp 800w,
+                 assets/images/homepage/optimized/Aiolos-Atem-1200.webp 1200w,
+                 assets/images/homepage/optimized/Aiolos-Atem-1600.webp 1600w,
+                 assets/images/homepage/optimized/Aiolos-Atem-2000.webp 2000w"
+         sizes="(max-width: 1100px) 100vw, calc(97vh * 1.0000)"
+         width="2200" height="2200"
+         alt="Aiolos' Atem" loading="lazy" decoding="async">
+    </a>
+
+   
+    <!--<a class="scroll-item">
+        <div class="art-info">
+            <h2>a lesson in softening</h2>
+            <p>acrylic paint, fineliner, marker <br>  on cotton fabric,</p>
+            <p>70 cm x 100 cm x 1,5 cm</p>
+        </div>
+        <img src="assets/images/homepage/19-a-lesson-in-softening-upscaled.jpeg" alt="Artwork 19" loading="lazy">    
+    </a>
+
+   
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2>Cappuccino <br> Sonne <br> Schnee</h2>
+            <p>acrylic paint, marker<br>on 410 g/m² heavy cotton fabric,</p>
+            <p>120 cm x 120 cm x 3,8 cm</p>
+        </div>
+        <img src="assets/images/homepage/20-Cappuccino-Sonne-Schnee-upscaled.jpeg" alt="Artwork 20" loading="lazy">    
+    </a>
+
+    
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2>still looking <br> for the dragon <br> that swallowed me</h2>
+            <p>acrylic paint, marker, pen <br> on glossy paper,</p>
+            <p>70 cm x 100 cm</p>
+        </div>
+        <img src="assets/images/homepage/21-still-looking-for-the-dragon-that-swallowed-me-upscaled.jpeg" alt="Artwork 21" loading="lazy">    
+    </a>-->
+
+
+<!--<a class="scroll-item">
+    <div class="art-info" data-art="fiebertraum">
+        <h2>Fiebertraum</h2>
+        <p class="desktop-text">red wine, acrylic paint, fineliner, marker on cardboard,</p>
+        <p class="mobile-text">red wine, acrylic paint, fineliner, marker<br>on cardboard,</p>
+        <p>62 cm x 100 cm</p>
+    </div>
+    <img src="assets/images/homepage/22-Fiebertraum-upscaled.jpeg" alt="Artwork 22" loading="lazy">
+</a>
+
+    
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2>manic panic</h2>
+            <p>acrylic paint, fineliner, marker, pen,<br>colored pencil on recycled paper,</p>
+            <p>82 cm x 117 cm</p>
+        </div>
+        <img src="assets/images/homepage/23-manic-panic-upscaled.jpg" alt="Artwork 23" loading="lazy">
+    </a>-->
+
+    
+    <!--<a class="scroll-item">
+        <div class="art-info">
+            <h2>quit or succeed</h2>
+            <p>acrylic paint, marker<br>on 410 g/m² heavy cotton fabric,</p>
+            <p>100 cm x 100 cm x 3,8 cm</p>
+        </div>
+        <img src="assets/images/homepage/25-quit-or-succeed-upscaled.jpeg" alt="Artwork 25" loading="lazy">
+    </a>
+
+    <a class="scroll-item">
+        <div class="art-info">
+            <h2>Nancy Botwin</h2>
+            <p>acrylic paint, marker<br>on 410 g/m² heavy cotton fabric,</p>
+            <p>100 cm x 100 cm x 3,8 cm</p>
+        </div>
+        <img src="assets/images/homepage/26-Nancy-Botwin-upscaled.jpeg" alt="Artwork 26" loading="lazy">
+    </a>-->
+
+</div>
+
+<script src="js/main.js"></script>
 
 </body>
 </html>
+
+
+
+<!--5. zu mir, nova, Sehen klärt wo Gedanken trüben vs. noisy bubblegum, Aiolos' Atem(.) when-thoughts-cloud-vision-and-visionclearsthoughts-upscaled & Sehen klärt wo Gedanken trüben vs. noisy bubblegum -->

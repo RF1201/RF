@@ -1,155 +1,225 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Imprint - Regina Fröhlich</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>REGINA FRÖHLICH - Imprint</title>
+
+    <meta name="description" content="Imprint and legal information for Regina Fröhlich's artist portfolio website.">
+
     <!-- FAVICON -->
-<link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/android-chrome-192x192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="assets/images/favicon/android-chrome-512x512.png">
-<link rel="manifest" href="assets/images/favicon/site.webmanifest">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<!-- =========================================
-     new added
-     ========================================= -->
-<link rel="mask-icon" href="assets/images/favicon/favicon.png" color="#ffffff">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%23ffffff'/></svg>">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon/Favicon-512x512.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/Favicon-512x512.png">
+    <link rel="apple-touch-icon" href="assets/favicon/Favicon-512x512.png">
 
+    <!-- FALLBACK SVG FAVICON -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%23ffffff'/></svg>">
 
+    <!-- MAIN STYLESHEET -->
+    <link rel="stylesheet" href="css/style.css">
 
-<link rel="stylesheet" href="css/style.css">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* =========================================
+           RESET
+        ========================================= */
 
-<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* Reset */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+        /* =========================================
+           BODY
+        ========================================= */
 
-body{
-    background:#fff;
-   font-family:"Gabarito", sans-serif;
-    font-weight:700;
-    font-size:11pt;
-    line-height:1.9;
-    color:#000;
-}
+        body {
+            background: #fff;
+            font-family: "Gabarito", sans-serif;
+            font-weight: 400;
+            font-size: 10pt;
+            line-height: 1.6;
+            color: #000;
 
-/* Container */
-.container{
-    max-width:800px;
-    margin:120px auto 40px;
-    padding:0 20px 100px;
-}
+            /* Enable hyphenation */
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
 
-/* Main Title */
-h1{
-    font-family:"Gabarito", sans-serif;
-    font-weight:700;
-    font-size:30px;
-    text-align:left;
-    margin-bottom:5px;
-}
+            overflow-x: hidden;
+        }
 
-/* Subtitle */
-h5{
-    text-align:left;
-    font-family:"Gabarito", sans-serif;
-    font-weight:700;
-    font-size:13pt;
-    color:#8c8c8c;
-    margin-bottom:50px;
-}
+        /* =========================================
+           LEGAL PAGE CONTAINER
+        ========================================= */
 
-/* Section Titles */
-h2{
-    font-family:"Gabarito", sans-serif;
-    font-weight:700;
-    font-size:14pt;
-    margin-top:3px;
-    margin-bottom:10px;
-}
+        .container {
+            width: calc(100% - 80px);
+            max-width: none;
+            margin: 30px 40px 30px;
+            padding: 0 0 60px;
+        }
 
-/* Subsection Titles */
-h3{
-    font-family:"Gabarito", sans-serif;
-    font-weight:700;
-    font-size:12pt;
-    margin-top:25px;
-    margin-bottom:10px;
-}
+        /* =========================================
+           MAIN TITLE
+        ========================================= */
 
-/* Paragraphs */
-p{
-    font-family:"Gabarito", sans-serif;
-    margin-bottom:18px;
-}
+        h1 {
+            font-family: "Gabarito", sans-serif;
+            font-weight: 600;
+            font-size: 12pt;
+            text-align: left;
+            margin-bottom: 2px;
+        }
 
-/* Links */
-a{
-    color:#000;
-    text-decoration:none;
-}
+        /* =========================================
+           SUBTITLE
+        ========================================= */
 
-a:hover{
-    opacity:0.6;
-}
+        h5 {
+            text-align: left;
+            font-family: "Gabarito", sans-serif;
+            font-weight: 400;
+            font-size: 10pt;
+            color: #8c8c8c;
+            margin-bottom: 20px;
+            margin-top: 14px;
+        }
 
-</style>
+        /* =========================================
+           SECTION HEADINGS
+        ========================================= */
+
+        h2 {
+            font-family: "Gabarito", sans-serif;
+            font-weight: 700;
+            font-size: 10pt;
+            margin-top: 14px;
+            margin-bottom: 4px;
+            text-align: left;
+        }
+
+        /* =========================================
+           PARAGRAPHS
+        ========================================= */
+
+        p {
+            font-family: "Gabarito", sans-serif;
+            font-weight: 400;
+            font-size: 10pt;
+            line-height: 1.6;
+            margin-bottom: 8px;
+
+            /* Justified text */
+            text-align: justify;
+            text-justify: inter-word;
+
+            /* Automatic hyphenation */
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+        }
+
+        /* =========================================
+           LINKS
+        ========================================= */
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        a:hover {
+            opacity: 0.6;
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 768px) {
+
+            .container {
+                width: calc(100% - 40px);
+                max-width: none;
+                margin: 30px 20px 30px;
+                padding: 0 0 50px;
+            }
+
+            p {
+                text-align: justify;
+                text-justify: inter-word;
+
+                hyphens: auto;
+                -webkit-hyphens: auto;
+                -ms-hyphens: auto;
+            }
+        }
+    </style>
 
 </head>
 
 <body>
 
-<!--<div class="top-left">
-<a href="javascript:history.back()">&#60;</a>
-</div>-->
+    <main class="container">
+
+        <h1>Imprint</h1>
+
+        <h5>Information according to § 5 DDG</h5>
 
 
-<div class="container">
+        <h2>Responsible for this Website</h2>
 
-<h1>Imprint</h1>
-<h5>Information according to § 5 TMG</h5>
-
-<h2>Responsible for this Website</h2>
-<p>
- Regina Fröhlich<br></p>
-<p>Profession: Freelance Artist<br></p>
-<p></p>Karl-Marx-Straße 19, 67227 Frankenthal, Germany<br></p>
+        <p>
+            Regina Fröhlich<br>
+            Karl-Marx-Straße 19, 67227 Frankenthal, Germany
+        </p>
 
 
-<h2>Contact</h2>
-<p>
-<a href="mailto:info@reginafroehlich.com">info@reginafroehlich.com</a><br></p>
-<p> <a href="https://wa.me/4917622598767" target="_blank">+49&nbsp;176&nbsp;22598767</a><br></p>
-</p>
+        <h2>Contact</h2>
 
-<h2>VAT</h2>
-<p>
-Small business pursuant to § 19 UStG. No VAT is charged.</p>
-<h2>Consumer Dispute Resolution</h2>
-<p>
-I do not participate in dispute resolution proceedings before a consumer arbitration board and am not obligated to do so.</p>
+        <p>
+            <a href="mailto:info@reginafroehlich.com">info@reginafroehlich.com</a><br>
+            <a href="https://wa.me/4917622598767"
+               target="_blank"
+               rel="noopener noreferrer">+49&nbsp;176&nbsp;22598767</a>
+        </p>
 
-<h2>Professional Activity</h2>
-<p>
-Visual artist specializing in original abstract paintings and mixed-media works.</p>
 
-<h2>Copyright</h2>
-<p>
-All content published on this website — in particular images of artworks, photographs, and texts — is protected by copyright. All rights are held by Regina Fröhlich, unless expressly stated otherwise.
-</p>
-<p>
-Any reproduction, distribution, or other use beyond the limits permitted by copyright law requires prior written consent.</p>
+        <h2>VAT</h2>
 
-</div>
+        <p>
+            Small business pursuant to § 19 UStG. No VAT is charged.
+        </p>
+
+
+        <h2>Consumer Dispute Resolution</h2>
+
+        <p>
+            I do not participate in dispute resolution proceedings before a consumer arbitration board and am not obligated to do so.
+        </p>
+
+
+        <h2>Professional Activity</h2>
+
+        <p>
+            Visual artist specializing in original abstract paintings and mixed-media works.
+        </p>
+
+
+        <h2>Copyright</h2>
+
+        <p>
+            All content published on this website, in particular images of artworks, photographs, and texts, is protected by copyright. All rights are held by Regina Fröhlich unless expressly stated otherwise. Any reproduction, distribution, or other use beyond the limits permitted by copyright law requires prior written consent.
+        </p>
+
+    </main>
 
 </body>
 </html>

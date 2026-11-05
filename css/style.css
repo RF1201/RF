@@ -53,7 +53,7 @@ body {
     display: block;
     height: 97vh;           
     width: 100%;
-    cursor: pointer;
+    /* cursor: pointer; */
     text-decoration: none;
     display: flex;
     justify-content: center;  
@@ -146,6 +146,25 @@ height:auto;
 width:100%;
 object-fit:contain;
 }
+
+.top-right {
+        position: fixed !important;
+        top: 20px !important;
+        right: 30px !important;
+        left: auto !important;
+        width: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: right !important;
+    }
+
+    .top-right a {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 11pt !important;
+        font-weight: 700 !important;
+    }
 
 }
 
@@ -246,11 +265,31 @@ object-fit:contain;
 }
 
 /* Contact button position */
-.top-right{
+/*.top-right{
     top:20px;
     right:20px;
     font-size:11pt;
-}
+}*/
+
+
+.top-right {
+        position: fixed !important;
+        top: 20px !important;
+        right: 20px !important;
+        left: auto !important;
+        width: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: right !important;
+    }
+
+    .top-right a {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 11pt !important;
+        font-weight: 700 !important;
+    }
 
 }
 
@@ -746,7 +785,7 @@ object-fit:contain;
     
     /* Remove any <br> in these paragraphs */
     .art-info[data-art="madre-ayahuasca"] p:first-of-type br,
-    .art-info[data-art="making-waves"] p:first-of-type br,
+    /* .art-info[data-art="making-waves"] p:first-of-type br, */
     .art-info[data-art="mutterwunde"] p:first-of-type br,
     .art-info[data-art="weise-instanz"] p:first-of-type br,
     .art-info[data-art="lesson-softening"] p:first-of-type br,
@@ -1022,4 +1061,64 @@ object-fit:contain;
           margin: 25px 0 35px !important;
          
     }
+}
+
+/* Force line breaks for specific titles - STRONG OVERRIDE */
+.title-break br {
+    display: inline !important;
+}
+
+/* Desktop - show 3-line version, hide 2-line version */
+.desktop-break {
+    display: inline;
+}
+.mobile-break {
+    display: none;
+}
+
+/* Mobile - show 2-line version (break after Gedanken), hide 3-line version */
+@media (max-width: 768px) {
+    .desktop-break {
+        display: none;
+    }
+    .mobile-break {
+        display: block;
+    }
+}
+@media (max-width: 768px) {
+    .mobile-title-break {
+        display: inline !important;
+    }
+}
+
+
+/* =====================================================
+   MATERIALS LINE BREAK — force "on ..." onto new line
+   Only applies on very narrow screens (≤ 400px)
+===================================================== */
+
+.mobile-material-break {
+    display: none;   /* hidden on all screens by default */
+}
+
+@media (max-width: 420px) {
+    .mobile-material-break {
+        display: inline;   /* show only on narrow phones */
+    }
+}
+
+/* =========================================
+   HOMEPAGE SCROLL RESTORATION FIX
+========================================= */
+
+html {
+    scroll-behavior: auto !important;
+}
+
+.scroll-container {
+    overflow-anchor: none;
+}
+
+.scroll-item img {
+    transition: opacity 0.4s ease;
 }
